@@ -9,7 +9,7 @@ const routes: Routes = [
     component:IndexPageComponent,
     children:[
       {
-        path:'bikeride',
+        path:'',
         component:IndexPageComponent
       }
     ] 
@@ -19,7 +19,7 @@ const routes: Routes = [
     component:ProfileMainComponent,
     children:[
       {
-        path:'bikeride',
+        path:'',
         component:ProfileMainComponent
       }
     ] 

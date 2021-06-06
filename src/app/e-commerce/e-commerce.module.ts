@@ -8,7 +8,7 @@ import { DealBannerComponent } from './index/deal-banner/deal-banner.component';
 import { TrendingComponent } from './index/trending/trending.component';
 import { ItemsRecommendedComponent } from './index/items-recommended/items-recommended.component';
 import { TradeServicesComponent } from './index/trade-services/trade-services.component';
-import { TranslateModule } from '@ngx-translate/core'
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({

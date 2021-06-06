@@ -11,6 +11,7 @@ import { HttpClientModule , HttpClient, HTTP_INTERCEPTORS } from '@angular/commo
 import { TranslateModule , TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { LnguageInterceptor } from './interceptors/language.interceptors';
+import { SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider } from 'angularx-social-login';
 
 
 export function HttpLoaderFactory(http:HttpClient)
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(http:HttpClient)
     AppRoutingModule,
     // BrowserAnimationsModule
     HttpClientModule,
+    SocialLoginModule,
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,
@@ -45,6 +47,20 @@ export function HttpLoaderFactory(http:HttpClient)
     provide:HTTP_INTERCEPTORS,
     useClass: LnguageInterceptor,
     multi:true
+  },
+  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '362308681769-enrdkku2v20m8uhk9miijb49l0q627kv.apps.googleusercontent.com'
+          )
+        }
+      ]
+    } as SocialAuthServiceConfig,
   },
   HttpClient
   ],

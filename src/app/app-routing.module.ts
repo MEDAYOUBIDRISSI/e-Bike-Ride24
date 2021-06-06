@@ -12,11 +12,11 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        redirectTo:'/bikeride',
+        redirectTo:'',
         pathMatch:'full'
       },
       {
-        path:'bikeride',
+        path:'',
         loadChildren:() => import('./e-commerce/e-commerce.module').then(m => m.ECommerceModule)
       }
     ]
