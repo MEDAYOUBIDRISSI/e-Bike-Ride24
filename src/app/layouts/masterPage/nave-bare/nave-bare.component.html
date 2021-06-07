@@ -32,56 +32,85 @@
 
 	<div class="container">
 		<section class="header-main border-bottom">
-			<div class="row row-sm">
-				<div class="col-6 col-sm col-md col-lg  flex-grow-0">
-					<a href="http://bootstrap-ecommerce.com/" class="brand-wrap">
-						<img class="logo" src="assets/images/logo3661.svg?v=2.0">
-					</a> <!-- brand-wrap.// -->
-				</div>
-				<div class="col-6 col-sm col-md col-lg flex-md-grow-0">
-
-					<!-- mobile-only -->
-					<div class="d-md-none float-right">
-						<a href="#" class="btn btn-light"> <i class="fa fa-bell"></i> </a>
-						<a href="#" class="btn btn-light"> <i class="fa fa-user"></i> </a>
-						<a href="#" class="btn btn-light"> <i class="fa fa-shopping-cart"></i> 2 </a>
+			<div class="container">
+				<div class="row row-sm align-items-center">
+					<div class="col-lg-2 col-md-3 col-6">
+						<a href="http://bootstrap-ecommerce.com/" class="brand-wrap">
+							<img class="logo" src="assets/images/logo.png">
+						</a> <!-- brand-wrap.// -->
 					</div>
-					<!-- mobile-only //end  -->
-
-					<div class="category-wrap d-none dropdown d-md-inline-block">
-						<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">   Shop by 
-						</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
-							<a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
-							<a class="dropdown-item" href="#">Auto / Transportation</a>
-							<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
-							<a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
-							<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
-						</div>
-					</div>  <!-- category-wrap.// -->
-				</div> <!-- col.// -->
-				<div class="col-lg-6 col-xl col-md-5 col-sm-12 flex-grow-1">
-					<form action="#" class="search-header">
-						<div class="input-group">
-						    <input type="text" class="form-control" placeholder="{{ 'SEARCH' | translate }}">
-						    <select class="custom-select border-left"  name="category_name">
-									<option value="">{{ 'ALL-TYPE' | translate }}</option>
-									<option value="codex">{{ 'BIKES' | translate }}</option>
-									<option value="comments">{{ 'ACCESSORIES' | translate }}</option>
-									<option value="content">{{ 'ACCESSORIES' | translate }}</option>
-							</select>
-					    </div>
-					</form> <!-- search-wrap .end// -->
-				</div> <!-- col.// -->
-				<div class="col col-lg col-md flex-grow-0">
-				    <button class="btn btn-block btn-primary" type="submit"> {{ 'SEARCH' | translate }} </button>
-				</div>
-				<div class="col col-lg col-md flex-grow-0">
-				    <button class="btn btn-block btn-light" type="submit"> Advanced </button>
-				</div>
-			</div> <!-- row.// -->
-		</section> <!-- header-main .// -->
+					<div class="col-lg col-sm col-md col-6 flex-grow-0">
+						<div class="category-wrap dropdown d-inline-block float-md-right">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+								<i class="fa fa-bars"></i> All category 
+							</button>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+								<a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
+								<a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
+								<a class="dropdown-item" href="#">Auto / Transportation</a>
+								<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
+								<a class="dropdown-item" href="#">Home &amp; Garden / Construction / Lights </a>
+								<a class="dropdown-item" href="#">Beauty &amp; Personal Care / Health </a> 
+							</div>
+						</div>  <!-- category-wrap.// -->
+					</div> <!-- col.// -->
+					<div class="col-lg  col-md-6 col-sm-12 col">
+						<form action="#" class="search-header">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="{{ 'SEARCH' | translate }}">
+								<select class="custom-select border-left"  name="category_name">
+										<option value="">{{ 'ALL-TYPE' | translate }}</option>
+										<option value="codex">{{ 'BIKES' | translate }}</option>
+										<option value="comments">{{ 'ACCESSORIES' | translate }}</option>
+										<option value="content">{{ 'ACCESSORIES' | translate }}</option>
+								</select>
+								<div class="input-group-append">
+									<button class="btn btn-primary" type="submit">
+									<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div> <!-- col.// -->
+					<div class="col-lg-3 col-sm-12 col-md-12 col-12">
+						<div class="widgets-wrap float-md-right">
+							<a href="#" class="widget-header mr-2">
+								<i class="icon icon-sm rounded-circle border fa fa-shopping-cart"></i>
+								<span class="notify">2</span>
+							</a>
+							<a href="#" class="widget-header mr-2">
+								<i class="icon icon-sm rounded-circle border fa fa-heart"></i>
+							</a>
+							<a href="#" class="widget-header mr-2">
+								<i class="icon icon-sm rounded-circle border fa fa-store"></i>
+							</a>
+							<div class="widget-header dropdown">
+								<a href="#" data-toggle="dropdown" data-offset="20,10">
+									<i class="icon icon-sm rounded-circle border fa fa-comment-dots"></i>
+									<span class="notify">2</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<form class="px-4 py-3">
+										<div class="form-group">
+										<label>Email address</label>
+										<input type="email" class="form-control" placeholder="email@example.com">
+										</div>
+										<div class="form-group">
+										<label>Password</label>
+										<input type="password" class="form-control" placeholder="Password">
+										</div>
+										<button type="submit" class="btn btn-primary">Sign in</button>
+										</form>
+										<hr class="dropdown-divider">
+										<a class="dropdown-item" href="#">Have account? Sign up</a>
+										<a class="dropdown-item" href="#">Forgot password?</a>
+								</div> <!--  dropdown-menu .// -->
+							</div>  <!-- widget-header .// -->
+						</div> <!-- widgets-wrap.// -->
+					</div> <!-- col.// -->
+				</div> <!-- row.// -->
+			</div> <!-- container.// -->
+		</section>
 		<nav class="navbar navbar-main navbar-expand pl-0">
 		      <ul class="navbar-nav flex-wrap">
 		      	<li class="nav-item">
