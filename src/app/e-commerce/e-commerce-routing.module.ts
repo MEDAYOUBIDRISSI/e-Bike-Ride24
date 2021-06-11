@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProfileMainComponent } from './profile-main/profile-main.component'
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component'
 import { IndexPageComponent } from './pages/index-page/index-page.component'
 
 const routes: Routes = [
@@ -16,11 +16,11 @@ const routes: Routes = [
   },
   {
     path:'profile',
-    component:ProfileMainComponent,
+    component:ProfilePageComponent,
     children:[
       {
         path:'',
-        component:ProfileMainComponent
+        component:ProfilePageComponent
       }
     ] 
   }

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +19,7 @@ export function HttpLoaderFactory(http:HttpClient)
 {
   return new TranslateHttpLoader(http);
 }
-
+ 
 @NgModule({
   declarations: [ 
     AppComponent,
@@ -33,6 +34,7 @@ export function HttpLoaderFactory(http:HttpClient)
     // BrowserAnimationsModule
     HttpClientModule,
     SocialLoginModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,
