@@ -10,6 +10,7 @@ export class SectionMainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(localStorage.getItem("jwt-IDUser"))
   }
 
 }

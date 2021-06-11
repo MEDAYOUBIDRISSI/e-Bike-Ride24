@@ -39,7 +39,7 @@
 							<img class="logo" src="assets/images/logo.png">
 						</a> <!-- brand-wrap.// -->
 					</div>
-					<div class="col-lg col-sm col-md col-6 flex-grow-0">
+					<!-- <div class="col-lg col-sm col-md col-6 flex-grow-0">
 						<div class="category-wrap dropdown d-inline-block float-md-right">
 							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
 								<i class="fa fa-bars"></i> All category 
@@ -52,8 +52,8 @@
 								<a class="dropdown-item" href="#">Home &amp; Garden / Construction / Lights </a>
 								<a class="dropdown-item" href="#">Beauty &amp; Personal Care / Health </a> 
 							</div>
-						</div>  <!-- category-wrap.// -->
-					</div> <!-- col.// -->
+						</div> 
+					</div> -->
 					<div class="col-lg  col-md-6 col-sm-12 col">
 						<form action="#" class="search-header">
 							<div class="input-group">
@@ -74,12 +74,15 @@
 					</div> <!-- col.// -->
 					<div class="col-lg-3 col-sm-12 col-md-12 col-12">
 						<div class="widgets-wrap float-md-right">
-							<a href="#" class="widget-header mr-2">
+							<a href="#" class="widget-header mr-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 								<i class="icon icon-sm rounded-circle border fa fa-shopping-cart"></i>
 								<span class="notify">2</span>
 							</a>
 							<a href="#" class="widget-header mr-2">
 								<i class="icon icon-sm rounded-circle border fa fa-heart"></i>
+							</a>
+							<a href="#" class="widget-header mr-2">
+								<i class="icon icon-sm rounded-circle border fa fa-user"></i>
 							</a>
 							<a href="#" class="widget-header mr-2">
 								<i class="icon icon-sm rounded-circle border fa fa-store"></i>
@@ -135,11 +138,11 @@
 								<a href="page-profile-wishlist.html">Profile wishlist</a>
 							</div>
 							<div class="col-4">
-								<h6 class="title-section text-uppercase">{{ 'BY-BRANDS' | translate }}</h6>
-								<a href="page-profile-main.html"><a href="#" class="btn btn-light">Brand ?</a></a>
-								<a href="page-profile-orders.html"><a href="#" class="btn btn-light">Brand ?</a></a>
-								<a href="page-profile-seller.html"><a href="#" class="btn btn-light">Brand ?</a></a>
-								<a href="page-profile-wishlist.html"><a href="#" class="btn btn-light">Brand ?</a></a>
+								<h6 class="title-section text-uppercase">{{ 'BY-BRANDS' | translate }}</h6>						
+								
+								<a href="page-profile-orders.html"><a href="#" class="btn btn-light">Brand</a></a>
+								<a href="page-profile-seller.html"><a href="#" class="btn btn-light">Brand</a></a>
+								<a href="page-profile-wishlist.html"><a href="#" class="btn btn-light">Brand</a></a>
 								<a href="page-profile-setting.html">
 									<div class="mt-3 mt-md-0"><a href="#" class="btn btn-outline-light">more brands</a></div>
 								</a>
@@ -203,4 +206,129 @@
 		</nav> <!-- navbar-main  .// -->
 
 	</div> <!-- container.// -->
+
+		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+			<div class="offcanvas-header">
+				<a id="offcanvasRightLabel" style="color:rgb(118, 118, 118);" >Shopping Cart</a>
+				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body">
+				<section class="section-content padding-y" style="font-size: small;">
+					<div class="container">
+						<div class="row">
+							<main class="col-md-12">
+								<div class="card">
+									<table class="table table-borderless table-shopping-cart">
+										<thead class="text-muted">
+											<tr class="small text-uppercase">
+												<th scope="col">Product</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<figure class="itemside">
+														<div class="aside">
+															<img src="assets/images/products/18.jpg" style="width: 50px;height: 50px;" class="img-sm">
+														</div>
+														<figcaption class="info">
+															<a href="#" class="title text-dark">Glovs 3xp</a>
+															<div class="btn-group me-2" role="group" aria-label="First group">
+																<button type="button" class="btn btn-primary">-</button>
+																<button type="button" class="btn btn-outline-primary">2</button>
+																<button type="button" class="btn btn-primary">+</button>
+															</div>
+														</figcaption>
+													</figure>
+												</td>
+												
+												<td>
+													<a href="#" class="btn" style="height: 30px;width:30px;color: gray; position: absolute;left: 90%;font-size: small;">X</a>
+													<div class="price-wrap" style="position:relative;top: 30px;"> 
+														<va class="text-muted"> $315.20 </va> 
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<figure class="itemside">
+														<div class="aside">
+															<img src="assets/images/products/26.jpg" style="width: 50px;height: 50px;" class="img-sm">
+														</div>
+														<figcaption class="info">
+															<a href="#" class="title text-dark">Sho-Ml 215</a>
+															<div class="btn-group me-2" role="group" aria-label="First group">
+																<button type="button" class="btn btn-primary">-</button>
+																<button type="button" class="btn btn-outline-primary">2</button>
+																<button type="button" class="btn btn-primary">+</button>
+															</div>
+														</figcaption>
+													</figure>
+												</td>
+												
+												<td>
+													<a href="#" class="btn" style="height: 30px;width:30px;color: gray; position: absolute;left: 90%;font-size: small;">X</a>
+													<div class="price-wrap" style="position:relative;top: 30px;"> 
+														<va class="text-muted"> $315.20 </va> 
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<figure class="itemside">
+														<div class="aside">
+															<img src="assets/images/products/35.jpg" style="width: 50px;height: 50px;" class="img-sm">
+														</div>
+														<figcaption class="info">
+															<a href="#" class="title text-dark">T-shirt MC Po 21</a>
+															<div class="btn-group me-2" role="group" aria-label="First group">
+																<button type="button" class="btn btn-primary">-</button>
+																<button type="button" class="btn btn-outline-primary">2</button>
+																<button type="button" class="btn btn-primary">+</button>
+															</div>
+														</figcaption>
+													</figure>
+												</td>
+												
+												<td>
+													<a href="#" class="btn" style="height: 30px;width:30px;color: gray; position: absolute;left: 90%;font-size: small;">X</a>
+													<div class="price-wrap" style="position:relative;top: 30px;"> 
+														<va class="text-muted"> $315.20 </va> 
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</main>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="card">
+				<div class="card-body">
+						<dl class="dlist-align">
+							<dt>Total price:</dt>
+							<dd class="text-right">USD 568</dd>
+						</dl>
+						<dl class="dlist-align">
+							<dt>Discount:</dt>
+							<dd class="text-right">USD 658</dd>
+						</dl>
+						<dl class="dlist-align">
+							<dt>Total:</dt>
+							<dd class="text-right  h5"><strong>$1,650</strong></dd>
+						</dl>
+						<hr>
+						<p class="text-center mb-3">
+							<img src="assets/images/misc/payments.png" height="26">
+						</p>
+				</div> <!-- card-body.// -->
+			</div>
+			<div class="btn-group btngroup-style" role="group" aria-label="Basic outlined example">
+				<button type="button" class="btn btn-outline-primary">Checkout</button>
+				<button type="button" class="btn btn-outline-primary">View Cart</button>
+			</div>
+		</div>
 </header>
