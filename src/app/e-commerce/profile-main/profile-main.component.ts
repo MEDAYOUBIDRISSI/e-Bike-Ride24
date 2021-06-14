@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ProfileMainComponent implements OnInit {
 
   public User: User={}
-  public UserMain: User={}
+
   _id: any;
   constructor(private UserService: UserServicesService,
     private router: Router) { } 
@@ -24,17 +24,30 @@ export class ProfileMainComponent implements OnInit {
   getUserAuth(){
     this.UserService.getUserAuth(this._id).subscribe(data => {
       this.User = data.User;
-      this.UserMain=data.User
-      console.log(this.User)
     });
   }
 
   updateProfile()
   {
+    console.log(this.User)
     this.UserService.updateProfile(this._id, this.User).subscribe( data =>{
       alert("Bien Update")
-      window.location.reload();
+      window.location.reload(); 
     }, error => console.log(error));
   }
 
+  
+    selectFiles(e)
+    {
+      var reader=new FileReader()
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload=(event:any)=>{
+        this.User.imgProfile=event.target.result
+     }
+    }
+
+    delete_img()
+    {
+      this.User.imgProfile="assets/images/avatars/inconnu.jpg";
+    }
 }

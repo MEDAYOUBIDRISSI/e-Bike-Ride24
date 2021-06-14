@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component'
 import { IndexPageComponent } from './pages/index-page/index-page.component'
+import { AllProductsPageComponent } from './pages/all-products-page/all-products-page.component'
 
 const routes: Routes = [
   {
@@ -21,6 +22,16 @@ const routes: Routes = [
       {
         path:'',
         component:ProfilePageComponent
+      }
+    ] 
+  },
+  {
+    path:'all-products',
+    component:AllProductsPageComponent,
+    children:[
+      {
+        path:'',
+        component:AllProductsPageComponent
       }
     ] 
   }

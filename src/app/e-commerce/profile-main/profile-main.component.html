@@ -21,11 +21,11 @@
 					<div class="card-body">
 						<figure class="icontext">
 								<div class="icon">
-									<img class="rounded-circle img-sm border" [src]="UserMain.imgProfile">
+									<img class="rounded-circle img-sm border" [src]="User.imgProfile">
 								</div>
 								<div class="text">
-									<strong> {{ UserMain.nom }} {{ UserMain.prenom }} </strong> <br> 
-									<p class="mb-2"> {{ UserMain.email }}  </p>
+									<strong> {{ User.nom }} {{ User.prenom }} </strong> <br> 
+									<p class="mb-2"> {{ User.email }}  </p>
 								</div>
 						</figure>
 					<hr>
@@ -63,6 +63,23 @@
                                     <textarea class="form-control" [(ngModel)] = "User.adresse" name="adresse"></textarea>
                                 </div> 
                             </div> 
+                            <div class="form-row">
+                                <div class="form-group col-md-7">
+                                    <article class="box mb-4">
+                                        <h6>Choiser l'image</h6>
+                                        <input type="file" (change)="selectFiles($event)" >
+                                    </article>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <article class="box mb-4">
+                                        <div class="icon">
+                                            <img class="rounded-circle img-sm border" [src]="User.imgProfile" style="margin-right: 10px;">
+                                            <a (click)="delete_img()" class="btn btn-light"> <i class="text-danger fa fa-trash"></i> </a>
+                                        </div>
+                                        
+                                    </article>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block" (click)="updateProfile()"> Update </button>
                             </div>         

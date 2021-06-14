@@ -6,64 +6,76 @@
                 <div class="form-row">
                     <div class="col form-group">
                         <label>First name</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" name="nom" [(ngModel)] = "User.nom" placeholder="">
                     </div> 
                     <div class="col form-group">
                         <label>Last name</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" name="prenom" [(ngModel)] = "User.prenom" placeholder="">
                     </div> 
-                </div> <!-- form-row end.// -->
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" placeholder="">
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div> 
-                <div class="form-group">
-                    <label class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" checked="" type="radio" name="gender" value="option1">
-                        <span class="custom-control-label"> Male </span>
-                    </label>
-                    <label class="custom-control custom-radio custom-control-inline">
-                        <input class="custom-control-input" type="radio" name="gender" value="option2">
-                        <span class="custom-control-label"> Female </span>
-                    </label>
-                </div> 
+                </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>City</label>
-                        <input type="text" class="form-control">
+                    <div class="col form-group">
+                        <label>CNE</label>
+                            <input type="text" class="form-control" name="cne" [(ngModel)] = "User.cne" placeholder="CNE: EE000000">
                     </div> 
-                    <div class="form-group col-md-6">
-                        <label>Country</label>
-                        <select id="inputState" class="form-control">
-                        <option> Choose...</option>
-                            <option>Uzbekistan</option>
-                            <option>Russia</option>
-                            <option selected="">United States</option>
-                            <option>India</option>
-                            <option>Afganistan</option>
-                        </select>
+                    <div class="col form-group">
+                        <label>Telephone</label>
+                            <input type="text" class="form-control" name="tel" [(ngModel)] = "User.tel" placeholder="+2126########">
                     </div> 
-                </div> <!-- form-row.// -->
+                    <div class="col form-group">
+                        <label>Date Naissance</label>
+                            <input type="date" class="form-control" name="dateNaissance" [(ngModel)] = "User.dateNaissance" placeholder="">
+                    </div> 
+                </div>
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label>Adress</label>
+                        <textarea class="form-control" name="adresse" [(ngModel)] = "User.adresse" placeholder=""></textarea>
+                    </div>  
+                </div>
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)] = "User.email" placeholder="">
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>  
+                </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Create password</label>
-                        <input class="form-control" type="password">
+                        <input class="form-control" name="password" [(ngModel)] = "User.password" type="password">
                     </div>  
                     <div class="form-group col-md-6">
                         <label>Repeat password</label>
-                        <input class="form-control" type="password">
+                        <input class="form-control" name="passwordRepeate" [(ngModel)] = "passwordRepeate" type="password">
                     </div>   
                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-7">
+                        <article class="box mb-4">
+                            <h6>Choiser l'image</h6>
+                            <input type="file" (change)="selectFiles($event)" >
+                        </article>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <article class="box mb-4">
+                            <div class="icon">
+                                <img class="rounded-circle img-sm border" [src]="urls" style="margin-right: 10px;">
+                                <a (click)="delete_img()" class="btn btn-light"> <i class="text-danger fa fa-trash"></i> </a>
+                            </div>
+                            
+                        </article>
+                    </div>
+                </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Register  </button>
-                </div> <!-- form-group// -->      
+                    <button (click)="saveUser()" class="btn btn-primary btn-block"> Register</button>
+                </div>    
                 <div class="form-group"> 
                     <label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a>  </div> </label>
                 </div>            
             </form>
         </article><!-- card-body.// -->
     </div>
-    <p class="text-center mt-4">Have an account? <a href="#">Log In</a></p>
+    <p class="text-center mt-4">Have an account? <a href="#" routerLink="/auth/login">Log In</a></p>
     <br><br>
 </section>

@@ -15,6 +15,7 @@ export class UserServicesService {
     return this.httpClient.get<User>(`${this.baseURL}/user/auth/${_id}`);
   }
   updateProfile(_id: number, User: User): Observable<Object>{
+    console.log("daz mn hna")
     return this.httpClient.put(`${this.baseURL}/user/update?UserID=${_id}`, User);
   }
 }

@@ -11,10 +11,12 @@ import { ItemsRecommendedComponent } from './index/items-recommended/items-recom
 import { TradeServicesComponent } from './index/trade-services/trade-services.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AllProductsComponent } from './products/all-products/all-products.component';
+import { AllProductsPageComponent } from './pages/all-products-page/all-products-page.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent],
   imports: [
     CommonModule,
     FormsModule,
