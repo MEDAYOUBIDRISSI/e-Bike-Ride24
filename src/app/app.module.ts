@@ -14,6 +14,32 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { LnguageInterceptor } from './interceptors/language.interceptors';
 import { SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider } from 'angularx-social-login';
 
+ //////import material Designe
+
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {Routes, RouterModule} from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 export function HttpLoaderFactory(http:HttpClient)
 {
@@ -35,6 +61,30 @@ export function HttpLoaderFactory(http:HttpClient)
     HttpClientModule,
     SocialLoginModule,
     FormsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    FormsModule,
+    HttpClientModule,
+    ScrollingModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatGridListModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatPaginatorModule,
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,

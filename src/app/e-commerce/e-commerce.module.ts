@@ -13,10 +13,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AllProductsComponent } from './products/all-products/all-products.component';
 import { AllProductsPageComponent } from './pages/all-products-page/all-products-page.component';
+import { DetailBicycletteComponent } from './products/detail-bicyclette/detail-bicyclette.component';
+import { DetailAccessoireVeloComponent } from './products/detail-accessoire-velo/detail-accessoire-velo.component';
+import { DetailAccessoireCyclisteComponent } from './products/detail-accessoire-cycliste/detail-accessoire-cycliste.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent],
   imports: [
     CommonModule,
     FormsModule,
