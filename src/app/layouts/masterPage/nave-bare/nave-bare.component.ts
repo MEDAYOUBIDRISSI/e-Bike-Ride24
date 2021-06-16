@@ -72,5 +72,14 @@ export class NaveBareComponent implements OnInit {
   }, error => console.log(error));
   }
 
+  deleteLigneCommande(_id: number){
+    this.ProductService.deleteLigneCommande(_id).subscribe( data => {
+      console.log(data);
+      this.getCommandeByUser()
+    }, error => console.log(error));
+  }
+
+  
+
 
 }

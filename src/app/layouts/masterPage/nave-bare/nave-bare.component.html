@@ -219,17 +219,17 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
+											<tr *ngFor = "let produit of LigneCommandes">
 												<td>
 													<figure class="itemside">
 														<div class="aside">
-															<img src="assets/images/products/18.jpg" style="width: 50px;height: 50px;" class="img-sm">
+															<img [src]="produit.product.Image[0]" style="width: 50px;height: 50px;" class="img-sm">
 														</div>
 														<figcaption class="info">
-															<a href="#" class="title text-dark">Glovs 3xp</a>
+															<a href="#" class="title text-dark">{{ produit.product.libelle }}</a>
 															<div class="btn-group me-2" role="group" aria-label="First group">
 																<button type="button" class="btn btn-primary">-</button>
-																<button type="button" class="btn btn-outline-primary">2</button>
+																<button type="button" class="btn btn-outline-primary">{{ produit.qte }}</button>
 																<button type="button" class="btn btn-primary">+</button>
 															</div>
 														</figcaption>
@@ -237,57 +237,9 @@
 												</td>
 												
 												<td>
-													<a href="#" class="btn" style="height: 30px;width:30px;color: gray; position: absolute;left: 90%;font-size: small;">X</a>
+													<button type="button" class="btn-close text-reset" aria-label="Close" (click)="deleteLigneCommande(produit._id)"></button>
 													<div class="price-wrap" style="position:relative;top: 30px;"> 
-														<va class="text-muted"> $315.20 </va> 
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<figure class="itemside">
-														<div class="aside">
-															<img src="assets/images/products/26.jpg" style="width: 50px;height: 50px;" class="img-sm">
-														</div>
-														<figcaption class="info">
-															<a href="#" class="title text-dark">Sho-Ml 215</a>
-															<div class="btn-group me-2" role="group" aria-label="First group">
-																<button type="button" class="btn btn-primary">-</button>
-																<button type="button" class="btn btn-outline-primary">2</button>
-																<button type="button" class="btn btn-primary">+</button>
-															</div>
-														</figcaption>
-													</figure>
-												</td>
-												
-												<td>
-													<a href="#" class="btn" style="height: 30px;width:30px;color: gray; position: absolute;left: 90%;font-size: small;">X</a>
-													<div class="price-wrap" style="position:relative;top: 30px;"> 
-														<va class="text-muted"> $315.20 </va> 
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<figure class="itemside">
-														<div class="aside">
-															<img src="assets/images/products/35.jpg" style="width: 50px;height: 50px;" class="img-sm">
-														</div>
-														<figcaption class="info">
-															<a href="#" class="title text-dark">T-shirt MC Po 21</a>
-															<div class="btn-group me-2" role="group" aria-label="First group">
-																<button type="button" class="btn btn-primary">-</button>
-																<button type="button" class="btn btn-outline-primary">2</button>
-																<button type="button" class="btn btn-primary">+</button>
-															</div>
-														</figcaption>
-													</figure>
-												</td>
-												
-												<td>
-													<a href="#" class="btn" style="height: 30px;width:30px;color: gray; position: absolute;left: 90%;font-size: small;">X</a>
-													<div class="price-wrap" style="position:relative;top: 30px;"> 
-														<va class="text-muted"> $315.20 </va> 
+														<va class="text-muted"> ${{ produit.product.prixVent }} </va> 
 													</div>
 												</td>
 											</tr>

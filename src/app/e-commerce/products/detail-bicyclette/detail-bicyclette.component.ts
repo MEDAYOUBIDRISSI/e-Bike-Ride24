@@ -6,7 +6,7 @@ import { User } from '../../class/user.class'
 import { ProductServiceService } from '../product-service.service'
 import { UserServicesService } from '../../services/user-services.service'
 import { ActivatedRoute,Router } from '@angular/router';
-
+ 
 @Component({
   selector: 'app-detail-bicyclette',
   templateUrl: './detail-bicyclette.component.html',
@@ -67,6 +67,7 @@ export class DetailBicycletteComponent implements OnInit {
     this.LigneCommande.product=this.Produit
     this.ProductService.createLigneCommande(this.LigneCommande).subscribe( data =>{
       console.log(data);
+      this.reloadComponent()
     },
     error => console.log(error));
 
@@ -100,4 +101,11 @@ export class DetailBicycletteComponent implements OnInit {
   {
     this._url=url
   }
+
+  reloadComponent() {
+    let currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+    }
 }
