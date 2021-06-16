@@ -6,6 +6,7 @@ import { AllProductsPageComponent } from './pages/all-products-page/all-products
 import { DetailBicycletteComponent } from './products/detail-bicyclette/detail-bicyclette.component'
 import { DetailAccessoireCyclisteComponent } from './products/detail-accessoire-cycliste/detail-accessoire-cycliste.component'
 import { DetailAccessoireVeloComponent } from './products/detail-accessoire-velo/detail-accessoire-velo.component'
+import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.component'
 
 const routes: Routes = [
   {
@@ -65,6 +66,16 @@ const routes: Routes = [
       {
         path:'',
         component:DetailAccessoireVeloComponent
+      }
+    ] 
+  },
+  {
+    path:'shoping-cart',
+    component:ShoppingcartComponent,
+    children:[
+      {
+        path:'',
+        component:ShoppingcartComponent
       }
     ] 
   }

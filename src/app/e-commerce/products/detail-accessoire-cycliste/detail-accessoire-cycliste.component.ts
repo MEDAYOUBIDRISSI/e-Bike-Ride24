@@ -70,7 +70,6 @@ export class DetailAccessoireCyclisteComponent implements OnInit {
       this.reloadComponent()
     },
     error => console.log(error));
-
   }
 
   plusqte()

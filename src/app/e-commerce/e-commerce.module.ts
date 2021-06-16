@@ -16,10 +16,11 @@ import { AllProductsPageComponent } from './pages/all-products-page/all-products
 import { DetailBicycletteComponent } from './products/detail-bicyclette/detail-bicyclette.component';
 import { DetailAccessoireVeloComponent } from './products/detail-accessoire-velo/detail-accessoire-velo.component';
 import { DetailAccessoireCyclisteComponent } from './products/detail-accessoire-cycliste/detail-accessoire-cycliste.component';
+import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent],
   imports: [
     CommonModule,
     FormsModule,
