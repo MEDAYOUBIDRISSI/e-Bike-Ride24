@@ -6,6 +6,8 @@ import { LigneCommande } from '../../../e-commerce/class/ligneCommande.class'
 import { User } from '../../../e-commerce/class/user.class'
 import { ProductServiceService } from '../../../e-commerce/products/product-service.service'
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
+import { SocialAuthService } from "angularx-social-login"; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nave-bare',
@@ -16,12 +18,14 @@ export class NaveBareComponent implements OnInit {
 
   lang:any;
   isLoging:boolean=false;
+  _numberofpurchases:number=0
   _idAuth = localStorage.getItem('jwt-IDUser')
   public Produit: Produit={};
   public User: User={}
   public Commande: Commande={};
   public LigneCommandes: LigneCommande[]=[];
-  constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService){}
+  constructor(private authService: SocialAuthService,private ProductService: ProductServiceService,
+  private UserServices: UserServicesService,private router: Router){}
 
   ngOnInit(): void {
     this.lang = localStorage.getItem('lang') || 'en';
@@ -68,6 +72,7 @@ export class NaveBareComponent implements OnInit {
   {
     this.ProductService.getCommandeByCommande(commandeId).subscribe(data => {
       this.LigneCommandes=data.LigneCommande
+      this._numberofpurchases=this.LigneCommandes.length
       console.log(this.LigneCommandes)
   }, error => console.log(error));
   }
@@ -79,5 +84,24 @@ export class NaveBareComponent implements OnInit {
     }, error => console.log(error));
   }
 
+  signOut():void{
+    this.authService.signOut().then().catch(err => console.log(err));
+    this.signOutFromLocalStorage()
+  }
 
+  signOutFromLocalStorage()
+  {
+    localStorage.removeItem('jwt-Token');
+    localStorage.removeItem('jwt-IDUser');
+    this.reloadComponent()
+  }
+
+
+  reloadComponent() 
+  {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
 }

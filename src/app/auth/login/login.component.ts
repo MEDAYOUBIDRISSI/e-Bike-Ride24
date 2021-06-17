@@ -1,6 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
-import { SocialAuthService } from "angularx-social-login";
+import { SocialAuthService } from "angularx-social-login"; 
 import { GoogleLoginProvider } from "angularx-social-login"
 import { User } from "../../e-commerce/class/user.class"
 import { LoginServiceService } from './login-service.service'
@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
 
   }
 
-  signOut(): void {
+  signOut():void {
     alert("log methode")
-    this.authService.signOut();
+    this.authService.signOut().then().catch(err => console.log(err));
   }
 
   goToIndex(){

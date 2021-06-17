@@ -6,7 +6,7 @@
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarTop4">
 		    <ul class="navbar-nav mr-auto">
-		    	<li *ngIf="isLoging==true"><span class="nav-link">{{ 'HI' | translate }}, <a href="#"> {{ 'SIGN-IN' | translate }} </a> {{ 'OR' | translate }} <a href="#"> {{ 'REGISTER' | translate }} </a></span></li>
+		    	<li *ngIf="isLoging==true"><span class="nav-link">{{ 'HI' | translate }}, <a href="#" routerLink="/auth/login"> {{ 'SIGN-IN' | translate }} </a> {{ 'OR' | translate }} <a href="#" routerLink="/auth/register"> {{ 'REGISTER' | translate }} </a></span></li>
 				<li><a href="#" class="nav-link"> {{ 'DEALS' | translate }} </a></li>
 				<li><a href="#" class="nav-link"> {{ 'SELL' | translate }} </a></li>
 				<li><a href="#" class="nav-link"> {{ 'HELP' | translate }} </a></li>
@@ -22,10 +22,21 @@
 						<li *ngIf="lang == 'en'"><a class="dropdown-item" (click)="changeLanguageToFrensh()"><img src="https://www.countryflags.io/fr/shiny/24.png"> {{ 'FRENSH' | translate }}</a></li>
 				    </ul>
 				</li>
-				<li><a href="#" class="nav-link"> My shop </a></li>
-				<li><a href="#" class="nav-link"> <i class="fa fa-bell"></i> </a></li>
-				<li><a href="#" class="nav-link"> <i class="fa fa-shopping-cart"></i> </a></li>
-			</ul> <!-- list-inline //  -->
+				<li><a class="nav-link"> <i class="fa fa-shopping-cart"></i> </a></li>
+			</ul>
+			<div class="widget dropdown d-inline-block">
+				<a href="#" class="icontext mr-4 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<img class="icon icon-xs rounded-circle" [src]="User.imgProfile">
+					<div class="text">
+						Hi, {{ User.nom }} {{ User.prenom }}
+					</div>
+				</a> <!-- iconbox // -->
+				<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
+					<a class="dropdown-item" routerLink="/profile" href="#">My profile</a>
+					<a class="dropdown-item" href="#">Settings</a>
+					<a class="dropdown-item" href='javascript:void(0)' (click)="signOut()">Log out</a>
+				</div>
+			</div>
 		  </div> <!-- navbar-collapse .// -->
 		</div> <!-- container //  -->
 	</nav>
@@ -61,7 +72,7 @@
 						<div class="widgets-wrap float-md-right">
 							<a href="#" class="widget-header mr-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 								<i class="icon icon-sm rounded-circle border fa fa-shopping-cart"></i>
-								<span class="notify">2</span>
+								<span class="notify">{{ _numberofpurchases }}</span>
 							</a>
 							<a href="#" class="widget-header mr-2">
 								<i class="icon icon-sm rounded-circle border fa fa-heart"></i>
