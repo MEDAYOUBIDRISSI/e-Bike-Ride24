@@ -22,7 +22,6 @@
 						<li *ngIf="lang == 'en'"><a class="dropdown-item" (click)="changeLanguageToFrensh()"><img src="https://www.countryflags.io/fr/shiny/24.png"> {{ 'FRENSH' | translate }}</a></li>
 				    </ul>
 				</li>
-				<li><a class="nav-link"> <i class="fa fa-shopping-cart"></i> </a></li>
 			</ul>
 			<div class="widget dropdown d-inline-block">
 				<a href="#" class="icontext mr-4 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -239,9 +238,15 @@
 														<figcaption class="info">
 															<a href="#" class="title text-dark">{{ produit.product.libelle }}</a>
 															<div class="btn-group me-2" role="group" aria-label="First group">
-																<button type="button" class="btn btn-primary">-</button>
-																<button type="button" class="btn btn-outline-primary">{{ produit.qte }}</button>
-																<button type="button" class="btn btn-primary">+</button>
+																<div class="input-group mb-3 input-spinner">
+																	<div class="input-group-prepend">
+																	  <button class="btn btn-light" (click)="addQuantity(produit._id,produit)" type="button" id="button-plus"> + </button>
+																	</div>
+																	<input type="text" disabled class="form-control" [(ngModel)]="produit.qte">
+																	<div class="input-group-append">
+																	  <button class="btn btn-light" (click)="minusQuantity(produit._id,produit)" type="button" id="button-minus"> &minus; </button>
+																	</div>
+																  </div>
 															</div>
 														</figcaption>
 													</figure>
@@ -249,8 +254,9 @@
 												
 												<td>
 													<button type="button" class="btn-close text-reset" aria-label="Close" (click)="deleteLigneCommande(produit._id)"></button>
-													<div class="price-wrap" style="position:relative;top: 30px;"> 
-														<va class="text-muted"> ${{ produit.product.prixVent }} </va> 
+													<div class="price-wrap"> 
+														<va class="text-muted"> ${{ produit.product.prixVent *  produit.qte}} </va> <br>
+														<small class="text-muted"> ${{ produit.product.prixVent}} each</small> 
 													</div>
 												</td>
 											</tr>
@@ -266,15 +272,15 @@
 				<div class="card-body">
 						<dl class="dlist-align">
 							<dt>Total price:</dt>
-							<dd class="text-right">USD 568</dd>
+							<dd class="text-right">USD {{ _totalePrice }}</dd>
 						</dl>
 						<dl class="dlist-align">
 							<dt>Discount:</dt>
-							<dd class="text-right">USD 658</dd>
+							<dd class="text-right">USD {{ _discount }}</dd>
 						</dl>
 						<dl class="dlist-align">
 							<dt>Total:</dt>
-							<dd class="text-right  h5"><strong>$1,650</strong></dd>
+							<dd class="text-right  h5"><strong>${{ _total }}</strong></dd>
 						</dl>
 						<hr>
 						<p class="text-center mb-3">

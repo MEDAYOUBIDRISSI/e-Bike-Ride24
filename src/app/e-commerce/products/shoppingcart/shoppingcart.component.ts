@@ -16,6 +16,9 @@ import { ActivatedRoute,Router } from '@angular/router';
 export class ShoppingcartComponent implements OnInit {
 
   _qte:number=0
+  _totalePrice:number=0
+  _discount:number=0
+  _total:number=0
   _idAuth = localStorage.getItem('jwt-IDUser')
   public Produit: Produit={};
   public User: User={}
@@ -48,25 +51,25 @@ export class ShoppingcartComponent implements OnInit {
   {
     this.ProductService.getCommandeByCommande(commandeId).subscribe(data => {
       this.LigneCommandes=data.LigneCommande
-      console.log(this.LigneCommandes)
+      this.totalPrice()
+      this.Total()
   }, error => console.log(error));
   }
 
   deleteLigneCommande(_id: number){
     this.ProductService.deleteLigneCommande(_id).subscribe( data => {
-      console.log(data);
       this.getCommandeByUser()
     }, error => console.log(error));
   }
 
-  plusqte(_idlignecommande:number,LigneCommande:LigneCommande)
+  addQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
   {
     this.ProductService.LigneCommandeAddQte(_idlignecommande, LigneCommande).subscribe( data =>{
       this.ngOnInit()
     }, error => console.log(error));
   }
 
-  minqte(_idlignecommande:number,LigneCommande:LigneCommande)
+  minusQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
   {
     this.ProductService.LigneCommandeMinusQte(_idlignecommande, LigneCommande).subscribe( data =>{
       this.ngOnInit()
@@ -79,6 +82,19 @@ export class ShoppingcartComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
+  }
+
+  totalPrice()
+  {
+    this._totalePrice=0
+    for (var productPrice of this.LigneCommandes) {
+      this._totalePrice = this._totalePrice+(productPrice.product?.prixVent * productPrice.qte)
+    }
+  }
+
+  Total()
+  {
+    this._total = this._totalePrice + this._discount
   }
 
 }

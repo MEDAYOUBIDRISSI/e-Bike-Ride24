@@ -19,6 +19,9 @@ export class NaveBareComponent implements OnInit {
   lang:any;
   isLoging:boolean=false;
   _numberofpurchases:number=0
+  _totalePrice:number=0
+  _discount:number=0
+  _total:number=0
   _idAuth = localStorage.getItem('jwt-IDUser')
   public Produit: Produit={};
   public User: User={}
@@ -73,7 +76,8 @@ export class NaveBareComponent implements OnInit {
     this.ProductService.getCommandeByCommande(commandeId).subscribe(data => {
       this.LigneCommandes=data.LigneCommande
       this._numberofpurchases=this.LigneCommandes.length
-      console.log(this.LigneCommandes)
+      this.totalPrice()
+      this.Total()
   }, error => console.log(error));
   }
 
@@ -103,5 +107,32 @@ export class NaveBareComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
+  }
+
+  addQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
+  {
+    this.ProductService.LigneCommandeAddQte(_idlignecommande, LigneCommande).subscribe( data =>{
+      this.ngOnInit()
+    }, error => console.log(error));
+  }
+
+  minusQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
+  {
+    this.ProductService.LigneCommandeMinusQte(_idlignecommande, LigneCommande).subscribe( data =>{
+      this.ngOnInit()
+    }, error => console.log(error));
+  }
+
+  totalPrice()
+  {
+    this._totalePrice=0
+    for (var productPrice of this.LigneCommandes) {
+      this._totalePrice = this._totalePrice+(productPrice.product?.prixVent * productPrice.qte)
+    }
+  }
+
+  Total()
+  {
+    this._total = this._totalePrice - this._discount
   }
 }

@@ -27,11 +27,11 @@
 									<div class="form-group col-md flex-grow-0">
                                         <div class="input-group mb-3 input-spinner">
                                           <div class="input-group-prepend">
-                                            <button class="btn btn-light" (click)="plusqte(produit._id,produit)" type="button" id="button-plus"> + </button>
+                                            <button class="btn btn-light" (click)="addQuantity(produit._id,produit)" type="button" id="button-plus"> + </button>
                                           </div>
                                           <input type="text" disabled class="form-control" [(ngModel)]="produit.qte">
                                           <div class="input-group-append">
-                                            <button class="btn btn-light" (click)="minqte(produit._id,produit)" type="button" id="button-minus"> &minus; </button>
+                                            <button class="btn btn-light" (click)="minusQuantity(produit._id,produit)" type="button" id="button-minus"> &minus; </button>
                                           </div>
                                         </div>
                                     </div>
@@ -79,15 +79,15 @@
 					<div class="card-body">
 							<dl class="dlist-align">
 							  <dt>Total price:</dt>
-							  <dd class="text-right">USD 568</dd>
+							  <dd class="text-right">USD {{ _totalePrice }}</dd>
 							</dl>
 							<dl class="dlist-align">
 							  <dt>Discount:</dt>
-							  <dd class="text-right">USD 658</dd>
+							  <dd class="text-right">USD {{ _discount }}</dd>
 							</dl>
 							<dl class="dlist-align">
 							  <dt>Total:</dt>
-							  <dd class="text-right  h5"><strong>$1,650</strong></dd>
+							  <dd class="text-right  h5"><strong>${{ _total }}</strong></dd>
 							</dl>
 							<hr>
 							<p class="text-center mb-3">
