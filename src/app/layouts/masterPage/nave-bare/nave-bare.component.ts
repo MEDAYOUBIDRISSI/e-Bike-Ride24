@@ -8,6 +8,8 @@ import { ProductServiceService } from '../../../e-commerce/products/product-serv
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 import { SocialAuthService } from "angularx-social-login"; 
 import { Router } from '@angular/router';
+declare var jQuery:any;
+declare var $:any;
 
 @Component({
   selector: 'app-nave-bare',
@@ -134,5 +136,9 @@ export class NaveBareComponent implements OnInit {
   Total()
   {
     this._total = this._totalePrice - this._discount
+  }
+  
+  toggle(){
+    $('.offcanvas-collapse').toggleClass('open');
   }
 }
