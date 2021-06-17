@@ -41,5 +41,12 @@ export class ProductServiceService {
     return this.httpClient.delete(`${this.baseURL}/lignecommande/delete?ligneCommandeID=${_id}`);
   }
 
+  LigneCommandeAddQte(_id: number, ligneCommande: LigneCommande): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/lignecommande/addqte?ligneCommandeID=${_id}`, ligneCommande);
+  }
+  LigneCommandeMinusQte(_id: number, ligneCommande: LigneCommande): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/lignecommande/minusqte?ligneCommandeID=${_id}`, ligneCommande);
+  }
+
 
 }

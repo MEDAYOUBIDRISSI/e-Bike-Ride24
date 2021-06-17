@@ -6,6 +6,7 @@ import { LigneCommande } from '../../../e-commerce/class/ligneCommande.class'
 import { User } from '../../../e-commerce/class/user.class'
 import { ProductServiceService } from '../../../e-commerce/products/product-service.service'
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -20,7 +21,9 @@ export class ShoppingcartComponent implements OnInit {
   public User: User={}
   public Commande: Commande={};
   public LigneCommandes: LigneCommande[]=[];
-  constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService){}
+  constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
+    private route: ActivatedRoute,
+    private router: Router){}
 
   ngOnInit(): void {
     this.getUserAuth()
@@ -54,6 +57,28 @@ export class ShoppingcartComponent implements OnInit {
       console.log(data);
       this.getCommandeByUser()
     }, error => console.log(error));
+  }
+
+  plusqte(_idlignecommande:number,LigneCommande:LigneCommande)
+  {
+    this.ProductService.LigneCommandeAddQte(_idlignecommande, LigneCommande).subscribe( data =>{
+      this.ngOnInit()
+    }, error => console.log(error));
+  }
+
+  minqte(_idlignecommande:number,LigneCommande:LigneCommande)
+  {
+    this.ProductService.LigneCommandeMinusQte(_idlignecommande, LigneCommande).subscribe( data =>{
+      this.ngOnInit()
+    }, error => console.log(error));
+  }
+
+  reloadComponent() 
+  {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 
 }
