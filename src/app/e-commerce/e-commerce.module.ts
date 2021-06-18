@@ -17,6 +17,7 @@ import { DetailBicycletteComponent } from './products/detail-bicyclette/detail-b
 import { DetailAccessoireVeloComponent } from './products/detail-accessoire-velo/detail-accessoire-velo.component';
 import { DetailAccessoireCyclisteComponent } from './products/detail-accessoire-cycliste/detail-accessoire-cycliste.component';
 import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.comp
     CommonModule,
     FormsModule,
     ECommerceRoutingModule,
-    TranslateModule
+    TranslateModule,
+    NgxPayPalModule
   ]
 })
 export class ECommerceModule { }

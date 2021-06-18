@@ -39,6 +39,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 export function HttpLoaderFactory(http:HttpClient)
@@ -85,6 +86,7 @@ export function HttpLoaderFactory(http:HttpClient)
     MatMenuModule,
     MatDialogModule,
     MatPaginatorModule,
+    NgxPayPalModule,
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,

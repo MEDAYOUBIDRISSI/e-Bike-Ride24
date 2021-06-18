@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Produit } from '../../../e-commerce/class/produit.class'
 import { Commande } from '../../../e-commerce/class/commande.class'
@@ -7,6 +7,7 @@ import { User } from '../../../e-commerce/class/user.class'
 import { ProductServiceService } from '../../../e-commerce/products/product-service.service'
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 import { ActivatedRoute,Router } from '@angular/router';
+import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -24,11 +25,15 @@ export class ShoppingcartComponent implements OnInit {
   public User: User={}
   public Commande: Commande={};
   public LigneCommandes: LigneCommande[]=[];
+
+  public payPalConfig ? : IPayPalConfig;
+
   constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private route: ActivatedRoute,
     private router: Router){}
 
   ngOnInit(): void {
+    this.initConfig();
     this.getUserAuth()
     this.getCommandeByUser()
   }
@@ -95,6 +100,68 @@ export class ShoppingcartComponent implements OnInit {
   Total()
   {
     this._total = this._totalePrice + this._discount
+  }
+
+
+  private initConfig(): void {
+    this.payPalConfig = {
+    currency: 'EUR',
+    clientId: 'AbgZQT_pay2Z8HH9najEqmextGJbNsoUtF_9Izunbu2zBvxDjHA6lklqAZW1sak5NZsHr2yGm1b2RA_g',
+    createOrderOnClient: (data) => <ICreateOrderRequest>{
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          amount: {
+            currency_code: 'EUR',
+            value: '9.99',
+            breakdown: {
+              item_total: {
+                currency_code: 'EUR',
+                value: '9.99'
+              }
+            }
+          },
+          items: [
+            {
+              name: 'Enterprise Subscription',
+              quantity: '1',
+              category: 'DIGITAL_GOODS',
+              unit_amount: {
+                currency_code: 'EUR',
+                value: '9.99',
+              },
+            }
+          ]
+        }
+      ]
+    },
+    advanced: {
+      commit: 'true'
+    },
+    style: {
+      label: 'paypal',
+      layout: 'vertical'
+    },
+    onApprove: (data, actions) => {
+      console.log('onApprove - transaction was approved, but not authorized', data, actions);
+      actions.order.get().then(details => {
+        console.log('onApprove - you can get full order details inside onApprove: ', details);
+      });
+    },
+    onClientAuthorization: (data) => {
+      console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+      this.showSuccess = true;
+    },
+    onCancel: (data, actions) => {
+      console.log('OnCancel', data, actions);
+    },
+    onError: err => {
+      console.log('OnError', err);
+    },
+    onClick: (data, actions) => {
+      console.log('onClick', data, actions);
+    },
+  };
   }
 
 }
