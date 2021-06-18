@@ -16,6 +16,7 @@ import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 })
 export class ShoppingcartComponent implements OnInit {
 
+  _ligneCommandeCharge:boolean=false
   _qte:number=0
   _totalePrice:number=0
   _discount:number=0
@@ -42,6 +43,7 @@ export class ShoppingcartComponent implements OnInit {
   {
       this.ProductService.getCommandeByUser(this._idAuth).subscribe(data => {
         this.Commande=data.commande
+        this.Commande
         this.getLigneCommandeByCommande(this.Commande._id)
     }, error => console.log(error));
   }
@@ -56,6 +58,11 @@ export class ShoppingcartComponent implements OnInit {
   {
     this.ProductService.getCommandeByCommande(commandeId).subscribe(data => {
       this.LigneCommandes=data.LigneCommande
+      console.log(this.LigneCommandes.length)
+      if(this.LigneCommandes.length!=0)
+      {
+        this._ligneCommandeCharge=true
+      }
       this.totalPrice()
       this.Total()
   }, error => console.log(error));
@@ -105,33 +112,22 @@ export class ShoppingcartComponent implements OnInit {
 
   private initConfig(): void {
     this.payPalConfig = {
-    currency: 'EUR',
+    currency: 'USD',
     clientId: 'AbgZQT_pay2Z8HH9najEqmextGJbNsoUtF_9Izunbu2zBvxDjHA6lklqAZW1sak5NZsHr2yGm1b2RA_g',
     createOrderOnClient: (data) => <ICreateOrderRequest>{
       intent: 'CAPTURE',
       purchase_units: [
         {
           amount: {
-            currency_code: 'EUR',
-            value: '9.99',
+            currency_code: 'USD',
+            value: this._total.toString(),
             breakdown: {
               item_total: {
-                currency_code: 'EUR',
-                value: '9.99'
+                currency_code: 'USD',
+                value: this._total.toString()
               }
             }
-          },
-          items: [
-            {
-              name: 'Enterprise Subscription',
-              quantity: '1',
-              category: 'DIGITAL_GOODS',
-              unit_amount: {
-                currency_code: 'EUR',
-                value: '9.99',
-              },
-            }
-          ]
+          }
         }
       ]
     },
@@ -151,6 +147,8 @@ export class ShoppingcartComponent implements OnInit {
     onClientAuthorization: (data) => {
       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
       this.showSuccess = true;
+      this.commandePayee()
+
     },
     onCancel: (data, actions) => {
       console.log('OnCancel', data, actions);
@@ -159,9 +157,17 @@ export class ShoppingcartComponent implements OnInit {
       console.log('OnError', err);
     },
     onClick: (data, actions) => {
+      console.log("click wa9ila")
       console.log('onClick', data, actions);
     },
   };
+  }
+
+  commandePayee()
+  {
+    this.ProductService.updateCommande(this.Commande._id,this.Commande).subscribe(data => {
+      alert("commande Validee")
+    }, error => console.log(error));
   }
 
 }

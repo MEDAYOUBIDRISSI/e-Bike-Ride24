@@ -3,7 +3,20 @@
 		<div class="row">
 			<main class="col-md-9">
 				<div class="card">
-					<table class="table table-borderless table-shopping-cart">
+                    <div *ngIf="_ligneCommandeCharge==false" class="row">
+                        <div class="col-md-12 mb15">
+                            <article class="card card-body">
+                                <figure class="text-center">
+                                    <span class="rounded-circle icon-md bg-secondary"><i class="far fa-clock white"></i></span>
+                                    <figcaption class="pt-4">
+                                    <h5 class="title">You have not made any order</h5>
+                                    <p>Order your orders delivered to you home </p>
+                                    </figcaption>
+                                </figure> <!-- iconbox // -->
+                            </article> <!-- panel-lg.// -->
+                        </div>
+                    </div>
+					<table class="table table-borderless table-shopping-cart" *ngIf="_ligneCommandeCharge==true">
 						<thead class="text-muted">
 							<tr class="small text-uppercase">
 							  <th scope="col">Product</th>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Produit } from '../../e-commerce/class/produit.class';
 import { LigneCommande } from '../../e-commerce/class/ligneCommande.class';
+import { Commande } from '../../e-commerce/class/commande.class';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class ProductServiceService {
 
   createCommande(Commande: Commande): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}/commande/create`, Commande);
+  }
+
+  updateCommande(_id: any, Commande: Commande): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/commande/update?CommandeID=${_id}`, Commande);
   }
 
   createLigneCommande(ligneCommande: LigneCommande): Observable<Object>{
