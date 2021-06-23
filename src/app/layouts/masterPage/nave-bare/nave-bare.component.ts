@@ -163,13 +163,24 @@ export class NaveBareComponent implements OnInit {
     }); 
   }
 
+  anotherReloadComponent(_url:any) 
+  {
+    let currentUrl = _url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
+
   BikesByUser(_id:number)
   {
     this.router.navigate(['list-bikes',"ByUser", _id]);
+    this.anotherReloadComponent("list-bikes/ByUser/"+_id)
+
   }
 
   BikesByCategorie(_id:number)
   {
     this.router.navigate(['list-bikes',"ByCategorie", _id]);
+    this.anotherReloadComponent("list-bikes/ByCategorie/"+_id)
   }
 }

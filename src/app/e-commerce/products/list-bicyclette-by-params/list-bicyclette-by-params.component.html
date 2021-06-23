@@ -206,27 +206,27 @@
 
 
         <div class="row">
-            <!-- <div class="col-md-4" *ngFor = "let produit of pageSlice">
+            <div class="col-md-4" *ngFor = "let produit of pageSlice">
                 <figure class="card card-product-grid" (click)="DetailProduct(produit._id,produit.typeProduct)">
                     <div class="img-wrap"> 
                         <span class="badge badge-danger"> NEW </span>
-                        <img [src]="produit?.Image[0]">
+                        <img [src]="produit.Image[0]">
                     </div> 
                     <figcaption class="info-wrap">
-                            <a href="#" class="title mb-2">{{ produit?.libelle }}</a>
+                            <a href="#" class="title mb-2">{{ produit.libelle }}</a>
                             <div class="price-wrap">
-                                <span class="price">${{produit?.prixVent}}</span> 
+                                <span class="price">${{produit.prixVent}}</span> 
                                 <small class="text-muted">/per item</small>
                             </div> 
                             
-                            <p class="mb-2"> {{produit?.qteStock}} Pieces  <small class="text-muted">(Min Order)</small></p>
+                            <p class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Min Order)</small></p>
                             
-                            <p class="text-muted ">Marque : {{ produit?.Marque.libelle }}</p>
+                            <p class="text-muted ">Marque : {{ produit.Marque.libelle }}</p>
                             <hr>
                             <p class="mb-3"> 
-                                <span class="tag"> <i class="fa fa-check"></i> {{produit?.typeProduct}}</span> 
-                                <span class="tag">{{produit?.categorie.libelle}}</span> 
-                                <span class="tag">Modal {{ produit?.anneModel }} </span> 
+                                <span class="tag"> <i class="fa fa-check"></i> {{produit.typeProduct}}</span> 
+                                <span class="tag">{{produit.categorie.libelle}}</span> 
+                                <span class="tag">Modal {{ produit.anneModel }} </span> 
                             </p>
                             <label class="custom-control mb-3 custom-checkbox">
                               <input type="checkbox" class="custom-control-input">
@@ -236,14 +236,14 @@
                             <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
                     </figcaption>
                 </figure>
-            </div> -->
-            <!-- <div class="col-md-12">
+            </div>
+            <div class="col-md-12">
                 <mat-paginator [length]="this.Produits.length"
                         [pageSize]="10"
                         [pageSizeOptions]="[10, 20, 50, 100, 250, 500, 1000]"
                         (page)="OnPageChange($event)">
                 </mat-paginator>
-            </div> -->
+            </div>
         </div>
 
 

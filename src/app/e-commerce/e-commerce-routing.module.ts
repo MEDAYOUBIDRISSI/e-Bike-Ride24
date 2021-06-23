@@ -81,7 +81,7 @@ const routes: Routes = [
     ] 
   },
   {
-    path:'list-bikes/:feature/:_id',
+    path:'list-bikes/:_feature/:_id',
     component:ListBicycletteByParamsComponent,
     children:[
       {

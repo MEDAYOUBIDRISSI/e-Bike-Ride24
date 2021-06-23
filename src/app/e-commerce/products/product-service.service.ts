@@ -68,4 +68,10 @@ export class ProductServiceService {
     return this.httpClient.get<Univer[]>(`${this.baseURL}/univer/all`);
   }
 
+  /* Get Products By Categorie */
+
+  getBicycletteByCategorie(_id: number): Observable<Produit>{
+    return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byCategorie/${_id}`);
+  }
+
 }
