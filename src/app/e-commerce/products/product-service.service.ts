@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Produit } from '../../e-commerce/class/produit.class';
 import { LigneCommande } from '../../e-commerce/class/ligneCommande.class';
 import { Commande } from '../../e-commerce/class/commande.class';
+import { Categorie } from '../../e-commerce/class/categorie.class';
+import { Univer } from '../../e-commerce/class/univer.class';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +55,17 @@ export class ProductServiceService {
     return this.httpClient.put(`${this.baseURL}/lignecommande/minusqte?ligneCommandeID=${_id}`, ligneCommande);
   }
 
+
+  /* Categories of Products */
+
+  getCategoriesList(): Observable<Categorie[]>{
+    return this.httpClient.get<Categorie[]>(`${this.baseURL}/categorie/all`);
+  }
+
+  /* Univers of Products */
+
+  getUniversList(): Observable<Univer[]>{
+    return this.httpClient.get<Univer[]>(`${this.baseURL}/univer/all`);
+  }
 
 }

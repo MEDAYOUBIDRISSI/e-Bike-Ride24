@@ -7,6 +7,7 @@ import { DetailBicycletteComponent } from './products/detail-bicyclette/detail-b
 import { DetailAccessoireCyclisteComponent } from './products/detail-accessoire-cycliste/detail-accessoire-cycliste.component'
 import { DetailAccessoireVeloComponent } from './products/detail-accessoire-velo/detail-accessoire-velo.component'
 import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.component'
+import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-params/list-bicyclette-by-params.component'
 
 const routes: Routes = [
   {
@@ -76,6 +77,16 @@ const routes: Routes = [
       {
         path:'',
         component:ShoppingcartComponent
+      }
+    ] 
+  },
+  {
+    path:'list-bikes/:feature/:_id',
+    component:ListBicycletteByParamsComponent,
+    children:[
+      {
+        path:'',
+        component:ListBicycletteByParamsComponent
       }
     ] 
   }

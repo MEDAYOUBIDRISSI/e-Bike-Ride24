@@ -4,6 +4,8 @@ import { Produit } from '../../../e-commerce/class/produit.class'
 import { Commande } from '../../../e-commerce/class/commande.class'
 import { LigneCommande } from '../../../e-commerce/class/ligneCommande.class'
 import { User } from '../../../e-commerce/class/user.class'
+import { Categorie } from '../../../e-commerce/class/categorie.class';
+import { Univer } from '../../../e-commerce/class/univer.class';
 import { ProductServiceService } from '../../../e-commerce/products/product-service.service'
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 import { SocialAuthService } from "angularx-social-login"; 
@@ -29,6 +31,8 @@ export class NaveBareComponent implements OnInit {
   public User: User={}
   public Commande: Commande={};
   public LigneCommandes: LigneCommande[]=[];
+  public Categories: Categorie[]=[];
+  Univers: Univer[]=[];
   constructor(private authService: SocialAuthService,private ProductService: ProductServiceService,
   private UserServices: UserServicesService,private router: Router){}
 
@@ -41,6 +45,8 @@ export class NaveBareComponent implements OnInit {
 
     this.getUserAuth()
     this.getCommandeByUser()
+    this.getCategories()
+    this.getUnivers()
   }
   changeLang(lang:any)
   {
@@ -140,5 +146,30 @@ export class NaveBareComponent implements OnInit {
   
   toggle(){
     $('.offcanvas-collapse').toggleClass('open');
+  }
+
+  getCategories(){
+    this.ProductService.getCategoriesList().subscribe(data => {
+      this.Categories = data.categories;
+      console.log("test")
+      console.log(this.Categories)
+    }); 
+  }
+
+  getUnivers(){
+    this.ProductService.getUniversList().subscribe(data => {
+      this.Univers = data.univers;
+      console.log(this.Univers)
+    }); 
+  }
+
+  BikesByUser(_id:number)
+  {
+    this.router.navigate(['list-bikes',"ByUser", _id]);
+  }
+
+  BikesByCategorie(_id:number)
+  {
+    this.router.navigate(['list-bikes',"ByCategorie", _id]);
   }
 }

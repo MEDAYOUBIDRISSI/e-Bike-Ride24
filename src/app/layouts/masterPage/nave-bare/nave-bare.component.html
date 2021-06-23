@@ -23,7 +23,7 @@
 				    </ul>
 				</li>
 			</ul>
-			<div class="widget dropdown d-inline-block">
+			<div class="widget dropdown d-inline-block" *ngIf="isLoging==false">
 				<a href="#" class="icontext mr-4 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 					<img class="icon icon-xs rounded-circle" [src]="User.imgProfile">
 					<div class="text">
@@ -67,7 +67,7 @@
 							</div>
 						</form>
 					</div> <!-- col.// -->
-					<div class="col-lg-3 col-sm-12 col-md-12 col-12">
+					<div class="col-lg-3 col-sm-12 col-md-12 col-12" *ngIf="isLoging==false">
 						<div class="widgets-wrap float-md-right">
 							<a href="#" class="widget-header mr-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 								<i class="icon icon-sm rounded-circle border fa fa-shopping-cart"></i>
@@ -115,24 +115,16 @@
 		           <a class="nav-link" routerLink="/index" href="#">{{ 'HOME' | translate }}</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{ 'BIKES' | translate }} Bicycles </a>
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{ 'BIKES' | translate }} </a>
 					<div class="dropdown-menu dropdown-large">
 						<nav class="row">
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-USER' | translate }}</h6>
-								<a>Women</a>
-								<a>Men</a>
-								<a>Youth Girls</a>
-								<a>Youth Boys</a>
-								<a>Kids Girls</a>
-								<a>Kids Boys</a>
+								<a *ngFor = "let univer of Univers"><a (click)="BikesByUser(univer._id)">{{univer.libelle}}</a></a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-CATEGORIES' | translate }}</h6>
-								<a>Road Bikes</a>
-								<a>Montain Bikes</a>
-								<a>Cross Bikes</a>
-								<a>Fitness Bikes</a>
+								<a *ngFor = "let categorie of Categories"><a (click)="BikesByCategorie(categorie._id)">{{categorie.libelle}}</a></a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-BRANDS' | translate }}</h6>						
@@ -183,9 +175,6 @@
 							</div>
 						</nav> <!--  row end .// -->
 					</div>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" href="#">{{ 'E-ACCESSORIES' | translate }} </a>
 		        </li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">{{ 'REVIEWS' | translate }} </a>

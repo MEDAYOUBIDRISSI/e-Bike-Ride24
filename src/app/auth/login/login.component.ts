@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     
     this.authService.signIn(platform).then((response)=>{
       this.userGoogle=response
+      console.log(response)
       this.User.nom=this.userGoogle.firstName
       this.User.prenom=this.userGoogle.lastName
       this.User.imgProfile=this.userGoogle.photoUrl
@@ -46,6 +47,16 @@ export class LoginComponent implements OnInit {
   signOut():void {
     alert("log methode")
     this.authService.signOut().then().catch(err => console.log(err));
+  }
+
+  saveLogin(){
+    this.LoginService.login(this.User).subscribe( data =>{
+      //console.log(data);
+      localStorage.setItem("jwt-Token",data.jwt);
+      localStorage.setItem("jwt-IDUser",data.payload.id);
+      this.goToIndex();
+    },
+    error => console.log(error));
   }
 
   goToIndex(){

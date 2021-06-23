@@ -6,10 +6,10 @@
             <a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i>Sign in with Facebook</a>
             <a (click)="signInWithGoogle('Google')" style="color: white;" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i>Sign in with Google</a>
             <div class="form-group">
-                <input name="" class="form-control" placeholder="Username" type="text">
-            </div> <!-- form-group// -->
+                <input name="email" [(ngModel)] = "User.email" class="form-control" placeholder="Username" type="text">
+            </div> <!-- form-group// --> 
             <div class="form-group">
-            <input name="" class="form-control" placeholder="Password" type="password">
+            <input name="password" [(ngModel)] = "User.password" class="form-control" placeholder="Password" type="password">
             </div> <!-- form-group// -->
             
             <div class="form-group">
@@ -19,7 +19,7 @@
             <!-- form-group// -->    
         </form>
         <div class="form-group">
-            <button (click)="signOut()" class="btn btn-primary btn-block"> Login  </button>
+            <button (click)="saveLogin()" class="btn btn-primary btn-block"> Login  </button>
         </div> 
         </div> <!-- card-body.// -->
     </div> <!-- card .// -->

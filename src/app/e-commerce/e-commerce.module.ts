@@ -19,10 +19,11 @@ import { DetailAccessoireCyclisteComponent } from './products/detail-accessoire-
 import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-params/list-bicyclette-by-params.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent],
   imports: [
     CommonModule,
     FormsModule,
