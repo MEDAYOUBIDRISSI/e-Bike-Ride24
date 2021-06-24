@@ -20,10 +20,11 @@ import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.comp
 import { NgxPayPalModule } from 'ngx-paypal';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-params/list-bicyclette-by-params.component';
+import { ChatBootComponent } from './supporArea/chat-boot/chat-boot.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent],
   imports: [
     CommonModule,
     FormsModule,
