@@ -6,6 +6,7 @@ import { LigneCommande } from '../../e-commerce/class/ligneCommande.class';
 import { Commande } from '../../e-commerce/class/commande.class';
 import { Categorie } from '../../e-commerce/class/categorie.class';
 import { Univer } from '../../e-commerce/class/univer.class';
+import { Marque } from '../../e-commerce/class/marque.class';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ProductServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getBicyclettesList(): Observable<Produit[]>{
+  getProductsList(): Observable<Produit[]>{
     return this.httpClient.get<Produit[]>(`${this.baseURL}/product/all`);
   }
 
@@ -68,10 +69,18 @@ export class ProductServiceService {
     return this.httpClient.get<Univer[]>(`${this.baseURL}/univer/all`);
   }
 
+   /* Brands of Products */
+
+   getMarquesList(): Observable<Marque[]>{
+    return this.httpClient.get<Marque[]>(`${this.baseURL}/marque/all`);
+  }
+
   /* Get Products By Categorie */
 
   getBicycletteByCategorie(_id: number): Observable<Produit>{
     return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byCategorie/${_id}`);
   }
+
+ 
 
 }

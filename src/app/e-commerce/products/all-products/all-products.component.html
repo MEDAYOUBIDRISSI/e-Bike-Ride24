@@ -2,68 +2,14 @@
     <aside class="col-md-2">
         <article class="filter-group">
             <h6 class="title">
-                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">Price</a>
-            </h6>
-            <div class="filter-content collapse show" id="collapse_1">
-                <div class="inner">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">50$ - 100$  
-                          <b class="badge badge-pill badge-light float-right">120</b>  </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">100$ - 200$   
-                          <b class="badge badge-pill badge-light float-right">15</b>  </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">200$ - 350$  
-                          <b class="badge badge-pill badge-light float-right">35</b> </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">350$ - 500$  
-                          <b class="badge badge-pill badge-light float-right">89</b> </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input">
-                      <div class="custom-control-label">500$ >
-                          <b class="badge badge-pill badge-light float-right">30</b>  </div>
-                    </label>
-                </div>
-            </div>
-        </article>
-        <article class="filter-group">
-            <h6 class="title">
                 <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
             </h6>
             <div class="filter-content collapse show" id="collapse_2">
                 <div class="inner">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">Adidas  
+                    <label class="custom-control custom-checkbox" *ngFor="let marque of marques">
+                      <input type="checkbox" class="custom-control-input" [value]="marque._id" name="BrandList" (change)="OnChange($event)" [(ngModel)]="marque.Checked">
+                      <div class="custom-control-label">{{marque.libelle}}  
                           <b class="badge badge-pill badge-light float-right">120</b>  </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">Nike 
-                          <b class="badge badge-pill badge-light float-right">15</b>  </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">The Noth Face 
-                          <b class="badge badge-pill badge-light float-right">35</b> </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">The cat 
-                          <b class="badge badge-pill badge-light float-right">89</b> </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input">
-                      <div class="custom-control-label">Honda 
-                          <b class="badge badge-pill badge-light float-right">30</b>  </div>
                     </label>
                 </div> <!-- inner.// -->
             </div>
@@ -74,16 +20,11 @@
             </h6>
             <div class="filter-content collapse show" id="collapse_3">
                 <div class="inner">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">Kids  
-                          <b class="badge badge-pill badge-light float-right">120</b>  </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">Nike 
-                          <b class="badge badge-pill badge-light float-right">15</b>  </div>
-                    </label>
+                    <label class="custom-control custom-checkbox" *ngFor="let univer of univers">
+                        <input type="checkbox" class="custom-control-input" [value]="univer._id" name="UniverList" (change)="OnChange($event)" [(ngModel)]="univer.Checked">
+                        <div class="custom-control-label">{{univer.libelle}}  
+                            <b class="badge badge-pill badge-light float-right">120</b>  </div>
+                      </label>
                 </div> <!-- inner.// -->
             </div>
         </article> 
@@ -93,16 +34,11 @@
             </h6>
             <div class="filter-content collapse show" id="collapse_4">
                 <div class="inner">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">Kids  
-                          <b class="badge badge-pill badge-light float-right">120</b>  </div>
-                    </label>
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" checked="" class="custom-control-input">
-                      <div class="custom-control-label">Nike 
-                          <b class="badge badge-pill badge-light float-right">15</b>  </div>
-                    </label>
+                    <label class="custom-control custom-checkbox" *ngFor="let categorie of categories">
+                        <input type="checkbox" class="custom-control-input" [value]="categorie._id" name="CategorieList" (change)="OnChange($event)" [(ngModel)]="categorie.Checked">
+                        <div class="custom-control-label">{{categorie.libelle}}  
+                            <b class="badge badge-pill badge-light float-right">120</b></div>
+                      </label>
                 </div> <!-- inner.// -->
             </div>
         </article> 
@@ -112,47 +48,19 @@
             </h6>
             <div class="filter-content collapse show" id="collapse_5">
                 <div class="inner">
-                    <input type="range" class="custom-range" min="0" max="100" name="">
+                    <!-- <input type="range" class="custom-range" min="0" max="100" name=""> -->
                     <div class="form-row">
                     <div class="form-group col-md-6">
                       <label>Min</label>
-                      <input class="form-control" placeholder="$0" type="number">
+                      <input class="form-control" placeholder="$0" type="number" [(ngModel)]="MinPrice">
                     </div>
                     <div class="form-group text-right col-md-6">
                       <label>Max</label>
-                      <input class="form-control" placeholder="$1,0000" type="number">
+                      <input class="form-control" placeholder="$1,0000" type="number" [(ngModel)]="MaxPrice">
                     </div>
                     </div> <!-- form-row.// -->
-                    <button class="btn btn-block btn-primary">Apply</button>
+                    <button class="btn btn-block btn-primary" (click)="filterByPrice()">Apply</button>
                 </div> <!-- inner.// -->
-            </div>
-        </article> 
-        <article class="filter-group">
-            <h6 class="title">
-                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_6"> Sizes </a>
-            </h6>
-            <div class="filter-content collapse show" id="collapse_6">
-                  <div class="inner">
-                      <label class="checkbox-btn">
-                        <input type="checkbox">
-                        <span class="btn btn-light"> XS </span>
-                      </label>
-
-                      <label class="checkbox-btn">
-                        <input type="checkbox">
-                        <span class="btn btn-light"> SM </span>
-                      </label>
-
-                      <label class="checkbox-btn">
-                        <input type="checkbox">
-                        <span class="btn btn-light"> LG </span>
-                      </label>
-
-                      <label class="checkbox-btn">
-                        <input type="checkbox">
-                        <span class="btn btn-light"> XXL </span>
-                      </label>
-                  </div> <!-- inner.// -->
             </div>
         </article> 
         <article class="filter-group">
@@ -206,27 +114,27 @@
 
 
         <div class="row">
-            <div class="col-md-4" *ngFor = "let produit of pageSlice">
+            <div class="col-md-4" *ngFor = "let produit of ProduitsDisplay">
                 <figure class="card card-product-grid" (click)="DetailProduct(produit._id,produit.typeProduct)">
                     <div class="img-wrap"> 
                         <!-- <span class="badge badge-danger"> NEW </span> -->
-                        <img [src]="produit?.Image[0]">
+                        <img [src]="produit.Image[0]">
                     </div> <!-- img-wrap.// -->
                     <figcaption class="info-wrap">
-                            <a href="#" class="title mb-2">{{ produit?.libelle }}</a>
+                            <a href="#" class="title mb-2">{{ produit.libelle }}</a>
                             <div class="price-wrap">
-                                <span class="price">${{produit?.prixVent}}</span> 
+                                <span class="price">${{produit.prixVent}}</span> 
                                 <small class="text-muted">/per item</small>
                             </div> <!-- price-wrap.// -->
                             
-                            <p class="mb-2"> {{produit?.qteStock}} Pieces  <small class="text-muted">(Min Order)</small></p>
+                            <p class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Min Order)</small></p>
                             
-                            <p class="text-muted ">Marque : {{ produit?.Marque.libelle }}</p>
+                            <p class="text-muted ">Marque : {{ produit.Marque?.libelle }}</p>
                             <hr>
                             <p class="mb-3"> 
-                                <span class="tag"> <i class="fa fa-check"></i> {{produit?.typeProduct}}</span> 
-                                <span class="tag">{{produit?.categorie.libelle}}</span> 
-                                <span class="tag">Modal {{ produit?.anneModel }} </span> 
+                                <span class="tag"> <i class="fa fa-check"></i> {{produit.typeProduct}}</span> 
+                                <span class="tag">{{produit.categorie.libelle}}</span> 
+                                <span class="tag">Modal {{ produit.anneModel }} </span> 
                             </p>
                             <label class="custom-control mb-3 custom-checkbox">
                               <input type="checkbox" class="custom-control-input">
@@ -245,13 +153,7 @@
                 </mat-paginator>
             </div>
         </div>
-
-
-        <div class="box text-center">
-            <p>Did you find what you were looking for？</p>
-            <a href="#" class="btn btn-light">Yes</a>
-            <a href="#" class="btn btn-light">No</a>
-        </div>
     </main> <!-- col.// -->
 
 </div>
+

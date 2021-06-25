@@ -91,7 +91,6 @@ export class NaveBareComponent implements OnInit {
 
   deleteLigneCommande(_id: number){
     this.ProductService.deleteLigneCommande(_id).subscribe( data => {
-      console.log(data);
       this.getCommandeByUser()
     }, error => console.log(error));
   }
@@ -151,15 +150,12 @@ export class NaveBareComponent implements OnInit {
   getCategories(){
     this.ProductService.getCategoriesList().subscribe(data => {
       this.Categories = data.categories;
-      console.log("test")
-      console.log(this.Categories)
     }); 
   }
 
   getUnivers(){
     this.ProductService.getUniversList().subscribe(data => {
       this.Univers = data.univers;
-      console.log(this.Univers)
     }); 
   }
 

@@ -6,6 +6,7 @@ import { Marque } from "../class/marque.class";
 
 export interface Produit
 { 
+    _id?:string;
     codeBare?:string;
     libelle?:string;
     hideline?:string;
