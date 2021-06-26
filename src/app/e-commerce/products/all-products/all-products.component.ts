@@ -71,7 +71,7 @@ export class AllProductsComponent implements OnInit {
     {
       this.router.navigate(['detailAccessoireCycliste', _id]);
     }
-    
+     
   } 
 
   getMarques()
