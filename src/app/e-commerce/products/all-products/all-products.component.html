@@ -2,6 +2,27 @@
     <aside class="col-md-2">
         <article class="filter-group">
             <h6 class="title">
+                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Price range </a>
+            </h6>
+            <div class="filter-content collapse show" id="collapse_5">
+                <div class="inner">
+                    <!-- <input type="range" class="custom-range" min="0" max="100" name=""> -->
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Min</label>
+                      <input class="form-control" placeholder="$0" type="number" [(ngModel)]="MinPrice">
+                    </div>
+                    <div class="form-group text-right col-md-6">
+                      <label>Max</label>
+                      <input class="form-control" placeholder="$1,0000" type="number" [(ngModel)]="MaxPrice">
+                    </div>
+                    </div> <!-- form-row.// -->
+                    <button class="btn btn-block btn-primary" (click)="filterByPrice()">Apply</button>
+                </div> <!-- inner.// -->
+            </div>
+        </article> 
+        <article class="filter-group">
+            <h6 class="title">
                 <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
             </h6>
             <div class="filter-content collapse show" id="collapse_2">
@@ -39,27 +60,6 @@
                         <div class="custom-control-label">{{categorie.libelle}}  
                             <b class="badge badge-pill badge-light float-right">120</b></div>
                       </label>
-                </div> <!-- inner.// -->
-            </div>
-        </article> 
-        <article class="filter-group">
-            <h6 class="title">
-                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Price range </a>
-            </h6>
-            <div class="filter-content collapse show" id="collapse_5">
-                <div class="inner">
-                    <!-- <input type="range" class="custom-range" min="0" max="100" name=""> -->
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label>Min</label>
-                      <input class="form-control" placeholder="$0" type="number" [(ngModel)]="MinPrice">
-                    </div>
-                    <div class="form-group text-right col-md-6">
-                      <label>Max</label>
-                      <input class="form-control" placeholder="$1,0000" type="number" [(ngModel)]="MaxPrice">
-                    </div>
-                    </div> <!-- form-row.// -->
-                    <button class="btn btn-block btn-primary" (click)="filterByPrice()">Apply</button>
                 </div> <!-- inner.// -->
             </div>
         </article> 
@@ -114,7 +114,7 @@
 
 
         <div class="row">
-            <div class="col-md-4" *ngFor = "let produit of ProduitsDisplay">
+            <div class="col-md-4" *ngFor = "let produit of pageSlice">
                 <figure class="card card-product-grid" (click)="DetailProduct(produit._id,produit.typeProduct)">
                     <div class="img-wrap"> 
                         <!-- <span class="badge badge-danger"> NEW </span> -->
@@ -146,7 +146,7 @@
                 </figure>
             </div>
             <div class="col-md-12">
-                <mat-paginator [length]="this.Produits.length"
+                <mat-paginator [length]="this.ProduitsDisplay.length"
                         [pageSize]="10"
                         [pageSizeOptions]="[10, 20, 50, 100, 250, 500, 1000]"
                         (page)="OnPageChange($event)">

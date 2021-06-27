@@ -42,8 +42,13 @@ export class AllProductsComponent implements OnInit {
     this.ProductService.getProductsList().subscribe(data => {
       this.Produits = data.products;
       this.ProduitsDisplay=this.Produits
-      this.pageSlice=this.Produits.slice(0,10);
+      this.pageSlice=this.ProduitsDisplay.slice(0,10);
     }); 
+  }
+
+  sliceChange()
+  {
+    this.pageSlice=this.ProduitsDisplay.slice(0,10);
   }
 
   OnPageChange(event : PageEvent)
@@ -51,11 +56,11 @@ export class AllProductsComponent implements OnInit {
       console.log(event)
       const startIndex = event.pageIndex * event.pageSize;
       let endIndex = startIndex + event.pageSize;
-      if(endIndex > this.Produits.length)
+      if(endIndex > this.ProduitsDisplay.length)
       {
-          endIndex = this.Produits.length;
+          endIndex = this.ProduitsDisplay.length;
       }
-      this.pageSlice=this.Produits.slice(startIndex,endIndex);
+      this.pageSlice=this.ProduitsDisplay.slice(startIndex,endIndex);
   } 
 
   DetailProduct(_id: number,typeProduct:string){ 
@@ -156,7 +161,15 @@ export class AllProductsComponent implements OnInit {
       if (this.selectedBrand.length == 0 && this.selectedOS.length == 0 && this.selectedNetwork.length == 0) {
         this.ProduitsDisplay = this.Produits;
       }
-      
+
+      //Price Filter
+      if(this.MaxPrice!=undefined && this.MinPrice!=undefined)
+      {
+        this.filterByPrice()
+      }
+
+      this.sliceChange()
+
     }
 
     get selectedBrand() {
@@ -177,15 +190,8 @@ export class AllProductsComponent implements OnInit {
 
     filterByPrice()
     {
-        var tempListProduit=this.ProduitsDisplay
-      
-        for (var i = 0; i < this.ProduitsDisplay.length; i++) {
-          if(!(parseFloat(this.ProduitsDisplay[i].prixVent+"") >= this.MinPrice && parseFloat(this.ProduitsDisplay[i].prixVent+"")<=this.MaxPrice))
-          {
-            this.ProduitsDisplay.splice(i,1)
-          }
-        }
-
+        this.ProduitsDisplay = this.ProduitsDisplay.filter(item => parseFloat(item.prixVent+"") >= this.MinPrice && parseFloat(item.prixVent+"")<=this.MaxPrice);
+        this.sliceChange()
     }
 
 

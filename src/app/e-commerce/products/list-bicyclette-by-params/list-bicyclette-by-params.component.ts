@@ -51,9 +51,14 @@ export class ListBicycletteByParamsComponent implements OnInit {
   getBicyclettesByCategorie(){
     this.ProductService.getBicycletteByCategorie(this._id).subscribe(data => {
       this.Produits = data.products;
-      this.pageSlice=this.Produits.slice(0,10);
-      console.log(this.Produits)
+      this.ProduitsDisplay=this.Produits
+      this.pageSlice=this.ProduitsDisplay.slice(0,10);
     }); 
+  }
+
+  sliceChange()
+  {
+    this.pageSlice=this.ProduitsDisplay.slice(0,10);
   }
 
   OnPageChange(event : PageEvent)
@@ -167,6 +172,14 @@ export class ListBicycletteByParamsComponent implements OnInit {
     if (this.selectedBrand.length == 0 && this.selectedOS.length == 0 && this.selectedNetwork.length == 0) {
       this.ProduitsDisplay = this.Produits;
     }
+
+    //Price Filter
+    if(this.MaxPrice!=undefined && this.MinPrice!=undefined)
+    {
+      this.filterByPrice()
+    }
+
+    this.sliceChange()
     
   }
 
@@ -183,6 +196,12 @@ export class ListBicycletteByParamsComponent implements OnInit {
   get selectedNetwork() {
     //Get all the selected networks
     return this.categories.filter(opt => opt.Checked)
+  }
+
+  filterByPrice()
+  {
+      this.ProduitsDisplay = this.ProduitsDisplay.filter(item => parseFloat(item.prixVent+"") >= this.MinPrice && parseFloat(item.prixVent+"")<=this.MaxPrice);
+      this.sliceChange()
   }
 
 
