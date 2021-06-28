@@ -157,7 +157,7 @@ export class NaveBareComponent implements OnInit {
     this.ProductService.getUniversList().subscribe(data => {
       this.Univers = data.univers;
     }); 
-  }
+  } 
 
   anotherReloadComponent(_url:any) 
   {
@@ -169,8 +169,8 @@ export class NaveBareComponent implements OnInit {
 
   BikesByUser(_id:number)
   {
-    this.router.navigate(['list-bikes',"ByUser", _id]);
-    this.anotherReloadComponent("list-bikes/ByUser/"+_id)
+    this.router.navigate(['list-bikes',"ByUniver", _id]);
+    this.anotherReloadComponent("list-bikes/ByUniver/"+_id)
 
   }
 

@@ -81,6 +81,12 @@ export class ProductServiceService {
     return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byCategorie/${_id}`);
   }
 
+   /* Get Products By Univer */
+
+   getBicycletteByUniver(_id: number): Observable<Produit>{
+    return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byUniver/${_id}`);
+  }
+
  
 
 }

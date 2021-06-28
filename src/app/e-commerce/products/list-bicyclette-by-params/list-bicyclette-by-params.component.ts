@@ -38,6 +38,10 @@ export class ListBicycletteByParamsComponent implements OnInit {
     {
         this.getBicyclettesByCategorie();
     }
+    else if(this._feature == "ByUniver")
+    {
+        this.getBicyclettesByUniver();
+    }
     else{
       this.Produits = []
     }
@@ -50,6 +54,14 @@ export class ListBicycletteByParamsComponent implements OnInit {
 
   getBicyclettesByCategorie(){
     this.ProductService.getBicycletteByCategorie(this._id).subscribe(data => {
+      this.Produits = data.products;
+      this.ProduitsDisplay=this.Produits
+      this.pageSlice=this.ProduitsDisplay.slice(0,10);
+    }); 
+  }
+
+  getBicyclettesByUniver(){
+    this.ProductService.getBicycletteByUniver(this._id).subscribe(data => {
       this.Produits = data.products;
       this.ProduitsDisplay=this.Produits
       this.pageSlice=this.ProduitsDisplay.slice(0,10);
