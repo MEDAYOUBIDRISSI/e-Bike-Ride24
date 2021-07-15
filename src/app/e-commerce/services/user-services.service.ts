@@ -11,10 +11,10 @@ export class UserServicesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getUserAuth(_id: any): Observable<User>{
+  getUserAuth(_id: any): Observable<any>{
     return this.httpClient.get<User>(`${this.baseURL}/user/auth/${_id}`);
   }
-  updateProfile(_id: number, User: User): Observable<Object>{
+  updateProfile(_id: number, User: User): Observable<any>{
     console.log("daz mn hna")
     return this.httpClient.put(`${this.baseURL}/user/update?UserID=${_id}`, User);
   }

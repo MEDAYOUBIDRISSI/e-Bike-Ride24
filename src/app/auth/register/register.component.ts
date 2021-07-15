@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
     }
 
     urls:string="assets/images/avatars/inconnu.jpg";
-    selectFiles(e)
+    selectFiles(e:any)
     {
       this.urls=""
       var reader=new FileReader()

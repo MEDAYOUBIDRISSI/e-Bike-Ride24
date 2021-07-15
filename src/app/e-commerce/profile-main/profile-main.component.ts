@@ -37,7 +37,7 @@ export class ProfileMainComponent implements OnInit {
   }
 
   
-    selectFiles(e)
+    selectFiles(e:any)
     {
       var reader=new FileReader()
       reader.readAsDataURL(e.target.files[0])
@@ -49,5 +49,5 @@ export class ProfileMainComponent implements OnInit {
     delete_img()
     {
       this.User.imgProfile="assets/images/avatars/inconnu.jpg";
-    }
-}
+    } 
+} 

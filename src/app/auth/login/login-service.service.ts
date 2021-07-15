@@ -11,12 +11,12 @@ export class LoginServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getUserAuth(): Observable<User>{
+  getUserAuth(): Observable<any>{
     return this.httpClient.get<User>(`${this.baseURL}/user/auth/coki/ecommerce`);
   }
 
-  login(Auth: User): Observable<Object>{
+  login(Auth: User): Observable<any>{
     return this.httpClient.post(`${this.baseURL}/user/login/ecommerce`, Auth);
-  }
+  } 
 
 }

@@ -13,77 +13,77 @@ import { Marque } from '../../e-commerce/class/marque.class';
 })
 export class ProductServiceService {
 
-  private baseURL = "http://localhost:5000";
+  private baseURL = "http://localhost:5000"; 
 
   constructor(private httpClient: HttpClient) { }
 
-  getProductsList(): Observable<Produit[]>{
+  getProductsList(): Observable<any>{
     return this.httpClient.get<Produit[]>(`${this.baseURL}/product/all`);
   }
 
-  getBicycletteById(_id: number): Observable<Produit>{
+  getBicycletteById(_id: number): Observable<any>{
     return this.httpClient.get<Produit>(`${this.baseURL}/product/${_id}`);
   }
 
-  createCommande(Commande: Commande): Observable<Object>{
+  createCommande(Commande: Commande): Observable<any>{
     return this.httpClient.post(`${this.baseURL}/commande/create`, Commande);
   }
 
-  updateCommande(_id: any, Commande: Commande): Observable<Object>{
+  updateCommande(_id: any, Commande: Commande): Observable<any>{
     return this.httpClient.put(`${this.baseURL}/commande/update?CommandeID=${_id}`, Commande);
   }
 
-  createLigneCommande(ligneCommande: LigneCommande): Observable<Object>{
+  createLigneCommande(ligneCommande: LigneCommande): Observable<any>{
     return this.httpClient.post(`${this.baseURL}/lignecommande/create`, ligneCommande);
   }
 
-  getCommandeByUser(_id: any): Observable<LigneCommande[]>{
+  getCommandeByUser(_id: any): Observable<any>{
     return this.httpClient.get<LigneCommande[]>(`${this.baseURL}/commande/byuser/${_id}`);
   }
 
-  getCommandeByCommande(_id: any): Observable<LigneCommande[]>{
+  getCommandeByCommande(_id: any): Observable<any>{
     return this.httpClient.get<LigneCommande[]>(`${this.baseURL}/lignecommande/bycommande/${_id}`);
   }
 
-  deleteLigneCommande(_id: number): Observable<Object>{
+  deleteLigneCommande(_id: number): Observable<any>{
     return this.httpClient.delete(`${this.baseURL}/lignecommande/delete?ligneCommandeID=${_id}`);
   }
 
-  LigneCommandeAddQte(_id: number, ligneCommande: LigneCommande): Observable<Object>{
+  LigneCommandeAddQte(_id: number, ligneCommande: LigneCommande): Observable<any>{
     return this.httpClient.put(`${this.baseURL}/lignecommande/addqte?ligneCommandeID=${_id}`, ligneCommande);
   }
-  LigneCommandeMinusQte(_id: number, ligneCommande: LigneCommande): Observable<Object>{
+  LigneCommandeMinusQte(_id: number, ligneCommande: LigneCommande): Observable<any>{
     return this.httpClient.put(`${this.baseURL}/lignecommande/minusqte?ligneCommandeID=${_id}`, ligneCommande);
   }
 
 
   /* Categories of Products */
 
-  getCategoriesList(): Observable<Categorie[]>{
+  getCategoriesList(): Observable<any>{
     return this.httpClient.get<Categorie[]>(`${this.baseURL}/categorie/all`);
   }
 
   /* Univers of Products */
 
-  getUniversList(): Observable<Univer[]>{
+  getUniversList(): Observable<any>{
     return this.httpClient.get<Univer[]>(`${this.baseURL}/univer/all`);
   }
 
    /* Brands of Products */
 
-   getMarquesList(): Observable<Marque[]>{
+   getMarquesList(): Observable<any>{
     return this.httpClient.get<Marque[]>(`${this.baseURL}/marque/all`);
   }
 
   /* Get Products By Categorie */
 
-  getBicycletteByCategorie(_id: number): Observable<Produit>{
+  getBicycletteByCategorie(_id: number): Observable<any>{
     return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byCategorie/${_id}`);
   }
 
    /* Get Products By Univer */
 
-   getBicycletteByUniver(_id: number): Observable<Produit>{
+   getBicycletteByUniver(_id: number): Observable<any>{
     return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byUniver/${_id}`);
   }
 

@@ -6,7 +6,7 @@ import { User } from "../../e-commerce/class/user.class"
 import { LoginServiceService } from './login-service.service'
 import { Router } from '@angular/router';
 
-@Component({
+@Component({ 
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

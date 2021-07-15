@@ -12,11 +12,11 @@ export class RegisterServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createClient(User: User): Observable<Object>{
+  createClient(User: User): Observable<any>{
     return this.httpClient.post(`${this.baseURL}/user/create`, User);
   }
   
-  login(Auth: User): Observable<Object>{
+  login(Auth: User): Observable<any>{
     return this.httpClient.post(`${this.baseURL}/user/login/ecommerce`, Auth);
   }
 }
