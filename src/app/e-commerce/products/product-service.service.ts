@@ -41,6 +41,10 @@ export class ProductServiceService {
     return this.httpClient.get<LigneCommande[]>(`${this.baseURL}/commande/byuser/${_id}`);
   }
 
+  getAllLigneCommandesByUser(_id: any): Observable<any>{
+    return this.httpClient.get<any[]>(`${this.baseURL}/lignecommande/byuser/${_id}`);
+  }
+
   getCommandeByCommande(_id: any): Observable<any>{
     return this.httpClient.get<LigneCommande[]>(`${this.baseURL}/lignecommande/bycommande/${_id}`);
   }

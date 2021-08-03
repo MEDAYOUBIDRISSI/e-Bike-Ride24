@@ -21,10 +21,11 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-params/list-bicyclette-by-params.component';
 import { ChatBootComponent } from './supporArea/chat-boot/chat-boot.component';
+import { AllCmdComponent } from './products/all-cmd/all-cmd.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent],
   imports: [
     CommonModule,
     FormsModule,

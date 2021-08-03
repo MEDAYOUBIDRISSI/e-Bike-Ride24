@@ -1,0 +1,76 @@
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+	<div class="container">
+		<div class="row">
+			<!-- <aside class="col-md-3">
+				<nav class="list-group">
+					<a class="list-group-item" href="page-profile-main.html"> Account overview  </a>
+					<a class="list-group-item" href="page-profile-address.html"> My Address </a>
+					<a class="list-group-item active" href="page-profile-orders.html"> My Orders </a>
+					<a class="list-group-item" href="page-profile-wishlist.html"> My wishlist </a>
+					<a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
+					<a class="list-group-item" href="page-profile-setting.html"> Settings </a>
+					<a class="list-group-item" href="page-index-1.html"> Log out </a>
+				</nav>
+			</aside> -->
+			<main class="col-md-12">
+
+			<article class="card mb-4" *ngFor = "let LigneCommande of LigneCommandes">
+				<header class="card-header">
+					<a href="#" class="float-right"> <i class="fa fa-print"></i> Print</a>
+					<strong class="d-inline-block mr-3">Order ID: {{LigneCommande.commande._id}}</strong>
+					<span>Order Date: {{LigneCommande.commande.createdAt | date: 'dd-MM-yyyy'}}</span>
+				</header>
+				<div class="card-body">
+					<div class="row"> 
+						<div class="col-md-8">
+							<h6 class="text-muted">Delivery to</h6>
+							<p>{{LigneCommande.commande.user.nom}} {{LigneCommande.commande.user.prenom}} <br>  
+							Phone: {{LigneCommande.commande.user.tel}} <br> Email: {{LigneCommande.commande.user.email}} <br>
+					    	Location: {{LigneCommande.commande.user.adresse}}
+					 		</p>
+						</div>
+						<div class="col-md-4">
+							<h6 class="text-muted">Payment</h6>
+							<span class="text-success">
+								<i class="fab fa-lg fa-cc-visa"></i>
+							    Visa  **** 4216  
+							</span>
+							<p>Subtotal: $356 <br>
+							 Shipping fee:  $56 <br> 
+							 <span class="b">Total:  $456 </span>
+							</p>
+						</div>
+					</div> <!-- row.// -->
+				</div> <!-- card-body .// -->
+				<div class="table-responsive">
+				<table class="table table-hover">
+					<tbody>
+                        <tr *ngFor = "let ligneCommande of LigneCommande.ligneCommandeTotal">
+                            <td width="65">
+                                <img [src]="ligneCommande.product.Image[0]" class="img-xs border">
+                            </td>
+                            <td> 
+                                <p class="title mb-0">{{ligneCommande.product.libelle}} (x {{ligneCommande.qte}} unite)</p>
+                                <var class="price text-muted">MAD {{ligneCommande.product.prixVent * ligneCommande.qte}}</var>
+                            </td>
+                            <td> Seller <br> Nike clothing </td>
+                            <td width="250"> <a href="#" class="btn btn-outline-primary">Track order</a> 
+                                <div class="dropdown d-inline-block">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-outline-secondary">More</a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item">Return</a>
+                                        <a href="#"  class="dropdown-item">Cancel order</a>
+                                    </div>
+                                </div> <!-- dropdown.// -->
+                            </td>
+					    </tr>
+				    </tbody>
+                </table>
+				</div> <!-- table-responsive .end// -->
+			</article> <!-- card order-item .// -->
+			</main> <!-- col.// -->
+		</div>
+	</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
