@@ -7,6 +7,7 @@ import { Commande } from '../../e-commerce/class/commande.class';
 import { Categorie } from '../../e-commerce/class/categorie.class';
 import { Univer } from '../../e-commerce/class/univer.class';
 import { Marque } from '../../e-commerce/class/marque.class';
+import { Coupon } from '../../e-commerce/class/coupon.class';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,11 @@ export class ProductServiceService {
     return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byUniver/${_id}`);
   }
 
+  // Get Coupon
+
+  getCouponByCoudeCoupon(codeCoupon: string): Observable<any>{
+    return this.httpClient.get<Coupon>(`${this.baseURL}/coupon/byCodeCoupon/${codeCoupon}`);
+  }
  
 
 }

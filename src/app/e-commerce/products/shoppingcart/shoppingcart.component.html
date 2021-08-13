@@ -77,11 +77,11 @@
 					<div class="card-body">
 					<form>
 						<div class="form-group">
-							<label>Have coupon?</label>
+							<label>{{_couponText}}</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="" placeholder="Coupon code">
+								<input type="text" class="form-control" name="coupon" [(ngModel)]="_coupon" placeholder="Coupon code">
 								<span class="input-group-append"> 
-									<button class="btn btn-primary">Apply</button>
+									<button class="btn btn-primary" (click)="CouponSearch()">Apply</button>
 								</span>
 							</div>
 						</div>
