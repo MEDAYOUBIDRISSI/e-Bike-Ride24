@@ -32,6 +32,10 @@ export class NaveBareComponent implements OnInit {
   public Commande: Commande={};
   public LigneCommandes: LigneCommande[]=[];
   public Categories: Categorie[]=[];
+  public CategoriesOfBike: Categorie[]=[];
+  public CategoriesOfAccessoireOfBikes: Categorie[]=[];
+  public CategoriesOfAccessoireOfBikers: Categorie[]=[];
+
   Univers: Univer[]=[];
   constructor(private authService: SocialAuthService,private ProductService: ProductServiceService,
   private UserServices: UserServicesService,private router: Router){}
@@ -47,6 +51,9 @@ export class NaveBareComponent implements OnInit {
     this.getCommandeByUser()
     this.getCategories()
     this.getUnivers()
+    this.getCategoriesOfBike()
+    this.getCategoriesOfAccessoiresOfBikers()
+    this.getCategoriesOfAccessoiresOfBike()
   }
   changeLang(lang:any)
   {
@@ -153,6 +160,24 @@ export class NaveBareComponent implements OnInit {
     }); 
   }
 
+  getCategoriesOfBike(){
+    this.ProductService.getCategoriesListOfBike().subscribe(data => {
+      this.CategoriesOfBike = data.categories;
+    }); 
+  }
+
+  getCategoriesOfAccessoiresOfBike(){
+    this.ProductService.getCategoriesListOfAccessoiresOfBike().subscribe(data => {
+      this.CategoriesOfAccessoireOfBikes = data.categories;
+    }); 
+  }
+
+  getCategoriesOfAccessoiresOfBikers(){
+    this.ProductService.getCategoriesListOfAccessoiresOfBikers().subscribe(data => {
+      this.CategoriesOfAccessoireOfBikers = data.categories;
+    }); 
+  }
+
   getUnivers(){
     this.ProductService.getUniversList().subscribe(data => {
       this.Univers = data.univers;
@@ -178,5 +203,23 @@ export class NaveBareComponent implements OnInit {
   {
     this.router.navigate(['list-bikes',"ByCategorie", _id]);
     this.anotherReloadComponent("list-bikes/ByCategorie/"+_id)
+  }
+
+  BikesByMarque(_id:number)
+  {
+    this.router.navigate(['list-bikes',"ByMarque", _id]);
+    this.anotherReloadComponent("list-bikes/ByMarque/"+_id)
+  }
+
+  BikesByAccessorieOfBike(_id:number)
+  {
+    this.router.navigate(['list-Accessoires',"ByAccessorieOfBike", _id]);
+    this.anotherReloadComponent("list-Accessoires/ByAccessorieOfBike/"+_id)
+  }
+
+  BikesByAccessorieOfBikers(_id:number)
+  {
+    this.router.navigate(['list-Accessoires',"ByAccessorieOfBikers", _id]);
+    this.anotherReloadComponent("list-Accessoires/ByAccessorieOfBikers/"+_id)
   }
 }

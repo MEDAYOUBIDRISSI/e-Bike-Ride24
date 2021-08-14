@@ -22,10 +22,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-params/list-bicyclette-by-params.component';
 import { ChatBootComponent } from './supporArea/chat-boot/chat-boot.component';
 import { AllCmdComponent } from './products/all-cmd/all-cmd.component';
+import { ListAccessoireByParamsComponent } from './products/list-accessoire-by-params/list-accessoire-by-params.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent, ListAccessoireByParamsComponent],
   imports: [
     CommonModule,
     FormsModule,

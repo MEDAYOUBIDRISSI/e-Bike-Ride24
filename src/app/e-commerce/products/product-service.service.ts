@@ -99,4 +99,21 @@ export class ProductServiceService {
   }
  
 
+  /* Categories of Bike */
+
+  getCategoriesListOfBike(): Observable<any>{
+    return this.httpClient.get<Categorie[]>(`${this.baseURL}/categorie/categorieOfBike/all`);
+  }
+
+  /* Categories of Accessoires Of Bike */
+
+  getCategoriesListOfAccessoiresOfBike(): Observable<any>{
+    return this.httpClient.get<Categorie[]>(`${this.baseURL}/categorie/categorieOfAccessoiresOfBike/all`);
+  }
+
+  /* Categories of Accessoires Of Bikers */
+
+  getCategoriesListOfAccessoiresOfBikers(): Observable<any>{
+    return this.httpClient.get<Categorie[]>(`${this.baseURL}/categorie/categorieOfAccessoiresOfBikers/all`);
+  }
 }

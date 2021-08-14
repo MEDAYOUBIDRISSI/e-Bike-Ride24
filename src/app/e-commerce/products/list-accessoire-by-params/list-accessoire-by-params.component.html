@@ -1,0 +1,166 @@
+<div class="row">
+    <aside class="col-md-2">
+        <article class="filter-group">
+            <h6 class="title">
+                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_5"> Price range </a>
+            </h6>
+            <div class="filter-content collapse show" id="collapse_5">
+                <div class="inner">
+                    <!-- <input type="range" class="custom-range" min="0" max="100" name=""> -->
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Min</label>
+                      <input class="form-control" placeholder="$0" type="number" [(ngModel)]="MinPrice">
+                    </div>
+                    <div class="form-group text-right col-md-6">
+                      <label>Max</label>
+                      <input class="form-control" placeholder="$1,0000" type="number" [(ngModel)]="MaxPrice">
+                    </div>
+                    </div> <!-- form-row.// -->
+                    <button class="btn btn-block btn-primary" (click)="filterByPrice()">Apply</button>
+                </div> <!-- inner.// -->
+            </div>
+        </article> 
+        <article class="filter-group">
+            <h6 class="title">
+                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
+            </h6>
+            <div class="filter-content collapse show" id="collapse_2">
+                <div class="inner">
+                    <label class="custom-control custom-checkbox" *ngFor="let marque of marques">
+                      <input type="checkbox" class="custom-control-input" [value]="marque._id" name="BrandList" (change)="OnChange($event)" [(ngModel)]="marque.Checked">
+                      <div class="custom-control-label">{{marque.libelle}}  
+                          <b class="badge badge-pill badge-light float-right">120</b>  
+                    </div>
+                    </label>
+                </div> <!-- inner.// -->
+            </div>
+        </article> 
+        <article class="filter-group" *ngIf=" _feature !== 'ByUniver' ">
+            <h6 class="title">
+                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> User </a>
+            </h6>
+            <div class="filter-content collapse show" id="collapse_3">
+                <div class="inner">
+                    <label class="custom-control custom-checkbox" *ngFor="let univer of univers">
+                        <input type="checkbox" class="custom-control-input" [value]="univer._id" name="UniverList" (change)="OnChange($event)" [(ngModel)]="univer.Checked">
+                        <div class="custom-control-label">{{univer.libelle}}  
+                            <b class="badge badge-pill badge-light float-right">120</b>  </div>
+                      </label>
+                </div> <!-- inner.// -->
+            </div>
+        </article> 
+        <!-- <article class="filter-group">
+            <h6 class="title">
+                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_4"> Categorie </a>
+            </h6>
+            <div class="filter-content collapse show" id="collapse_4">
+                <div class="inner">
+                    <label class="custom-control custom-checkbox" *ngFor="let categorie of categories">
+                        <input type="checkbox" class="custom-control-input" [value]="categorie._id" name="CategorieList" (change)="OnChange($event)" [(ngModel)]="categorie.Checked">
+                        <div class="custom-control-label">{{categorie.libelle}}  
+                            <b class="badge badge-pill badge-light float-right">120</b></div>
+                      </label>
+                </div>
+            </div>
+        </article>  -->
+        <article class="filter-group">
+            <h6 class="title">
+                <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_7"> Condition </a>
+            </h6>
+            <div class="filter-content collapse show" id="collapse_7">
+                <div class="inner">
+                    <label class="custom-control custom-radio">
+                      <input type="radio" name="myfilter_radio" checked="" class="custom-control-input">
+                      <div class="custom-control-label">Any condition</div>
+                    </label>
+
+                    <label class="custom-control custom-radio">
+                      <input type="radio" name="myfilter_radio" class="custom-control-input">
+                      <div class="custom-control-label">Brand new </div>
+                    </label>
+
+                    <label class="custom-control custom-radio">
+                      <input type="radio" name="myfilter_radio" class="custom-control-input">
+                      <div class="custom-control-label">Used items</div>
+                    </label>
+
+                    <label class="custom-control custom-radio">
+                      <input type="radio" name="myfilter_radio" class="custom-control-input">
+                      <div class="custom-control-label">Very old</div>
+                    </label>
+                </div> <!-- inner.// -->
+            </div>
+        </article> 
+    </aside>
+
+    <main class="col-md-10">
+        <header class="mb-3">
+                <div class="form-inline">
+                    <strong class="mr-md-auto">32 Items found </strong>
+                    <select class="mr-2 form-control">
+                        <option>Latest items</option>
+                        <option>Trending</option>
+                        <option>Most Popular</option>
+                        <option>Cheapest</option>
+                    </select>
+                    <div class="btn-group">
+                        <a href="page-listing-grid.html" class="btn btn-light" data-toggle="tooltip" title="List view"> 
+                            <i class="fa fa-bars"></i></a>
+                        <a href="page-listing-large.html" class="btn btn-light active" data-toggle="tooltip" title="Grid view"> 
+                            <i class="fa fa-th"></i></a>
+                    </div>
+                </div>
+        </header>
+
+
+        <div class="row">
+            <div class="col-md-4" *ngFor = "let produit of ProduitsDisplay">
+                <figure class="card card-product-grid" (click)="DetailProduct(produit._id,produit.typeProduct)">
+                    <div class="img-wrap"> 
+                        <!-- <span class="badge badge-danger"> NEW </span> -->
+                        <img [src]="produit.Image[0]">
+                    </div> 
+                    <figcaption class="info-wrap">
+                            <a href="#" class="title mb-2">{{ produit.libelle }}</a>
+                            <div class="price-wrap">
+                                <span class="price">${{produit.prixVent}}</span> 
+                                <small class="text-muted">/per item</small>
+                            </div> 
+                            
+                            <p class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Min Order)</small></p>
+                            
+                            <p class="text-muted ">Marque : {{ produit.Marque?.libelle }}</p>
+                            <hr>
+                            <p class="mb-3"> 
+                                <span class="tag"> <i class="fa fa-check"></i> {{produit.typeProduct}}</span> 
+                                <span class="tag">{{produit.categorie.libelle}}</span> 
+                                <span class="tag">Modal {{ produit.anneModel }} </span> 
+                            </p>
+                            <label class="custom-control mb-3 custom-checkbox">
+                              <input type="checkbox" class="custom-control-input">
+                              <div class="custom-control-label">Add to compare
+                              </div>
+                            </label>
+                            <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-12">
+                <mat-paginator [length]="this.ProduitsDisplay.length"
+                        [pageSize]="10"
+                        [pageSizeOptions]="[10, 20, 50, 100, 250, 500, 1000]"
+                        (page)="OnPageChange($event)">
+                </mat-paginator>
+            </div>
+        </div>
+
+
+        <div class="box text-center">
+            <p>Did you find what you were looking for？</p>
+            <a href="#" class="btn btn-light">Yes</a>
+            <a href="#" class="btn btn-light">No</a>
+        </div>
+    </main> <!-- col.// -->
+
+</div>

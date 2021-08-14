@@ -124,7 +124,7 @@
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-CATEGORIES' | translate }}</h6>
-								<a *ngFor = "let categorie of Categories"><a (click)="BikesByCategorie(categorie._id)">{{categorie.libelle}}</a></a>
+								<a *ngFor = "let categorie of CategoriesOfBike"><a (click)="BikesByCategorie(categorie._id)">{{categorie.libelle}}</a></a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-BRANDS' | translate }}</h6>						
@@ -148,18 +148,14 @@
 						<nav class="row">
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'FOR-THE-BICYCLE' | translate }}</h6>
-								<a>Bags and Car Racks</a>
-								<a>Bells and Horns</a>
-								<a>Bottles and Bottle Cages</a>
+								<a *ngFor = "let categorie of CategoriesOfAccessoireOfBikes"><a (click)="BikesByAccessorieOfBike(categorie._id)">{{categorie.libelle}}</a></a>
 								<a>
 									<div class="mt-3 mt-md-0"><a href="#" class="btn btn-outline-light">More</a></div>
 								</a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'FOR-THE-RIDER' | translate }}</h6>
-								<a>Backpacks</a>
-								<a>Compression and Inner Wear</a>
-								<a>Eyewear</a>
+								<a *ngFor = "let categorie of CategoriesOfAccessoireOfBikers"><a (click)="BikesByAccessorieOfBikers(categorie._id)">{{categorie.libelle}}</a></a>
 								<a>
 									<div class="mt-3 mt-md-0"><a href="#" class="btn btn-outline-light">More</a></div>
 								</a>
@@ -173,7 +169,7 @@
 									<div class="mt-3 mt-md-0"><a href="#" class="btn btn-outline-light">{{ 'MORE-BRANDS' | translate }}</a></div>
 								</a>
 							</div>
-						</nav> <!--  row end .// -->
+						</nav>
 					</div>
 		        </li>
 				<li class="nav-item">
