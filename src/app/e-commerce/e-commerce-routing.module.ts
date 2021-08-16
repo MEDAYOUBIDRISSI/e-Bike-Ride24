@@ -10,6 +10,7 @@ import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.comp
 import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-params/list-bicyclette-by-params.component'
 import { ListAccessoireByParamsComponent } from './products/list-accessoire-by-params/list-accessoire-by-params.component'
 import { AllCmdComponent } from './products/all-cmd/all-cmd.component'
+import { ReviewPageComponent } from './pages/review-page/review-page.component'
 
 const routes: Routes = [
   {
@@ -29,6 +30,16 @@ const routes: Routes = [
       {
         path:'',
         component:ProfilePageComponent
+      }
+    ] 
+  },
+  {
+    path:'review',
+    component:ReviewPageComponent,
+    children:[
+      {
+        path:'',
+        component:ReviewPageComponent
       }
     ] 
   },

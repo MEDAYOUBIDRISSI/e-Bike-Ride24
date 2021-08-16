@@ -116,4 +116,40 @@ export class ProductServiceService {
   getCategoriesListOfAccessoiresOfBikers(): Observable<any>{
     return this.httpClient.get<Categorie[]>(`${this.baseURL}/categorie/categorieOfAccessoiresOfBikers/all`);
   }
+
+  /* Get Accessoires Cycliste By Categorie */
+
+  getAccessoioreCyclisteByCategorie(_id: any): Observable<any>{
+    return this.httpClient.get<Produit>(`${this.baseURL}/product/accessoirecycliste/byCategorie/${_id}`);
+  }
+
+  /* Get Accessoires Vello By Categorie */
+
+  getAccessoioreVeloByCategorie(_id: any): Observable<any>{
+    return this.httpClient.get<Produit>(`${this.baseURL}/product/accessoirevelo/byCategorie/${_id}`);
+  }
+
+  /* Marque of Bike */
+
+  getMarquesListOfBike(): Observable<any>{
+    return this.httpClient.get<Marque[]>(`${this.baseURL}/marque/marquesOfBike/all`);
+  }
+
+  /* Marques of Accessoire */
+
+  getMarqueListOfAccessoires(): Observable<any>{
+    return this.httpClient.get<Marque[]>(`${this.baseURL}/marque/marquesOfAccessoires/all`);
+  }
+
+  /* Get Accessoires By Marque */
+
+  getAccessoioreByMaque(_id: any): Observable<any>{
+    return this.httpClient.get<Produit>(`${this.baseURL}/product/accessoire/byMarque/${_id}`);
+  }
+
+   /* Get Accessoires By Marque */
+
+   getBikeByMaque(_id: any): Observable<any>{
+    return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byMarque/${_id}`);
+  }
 }

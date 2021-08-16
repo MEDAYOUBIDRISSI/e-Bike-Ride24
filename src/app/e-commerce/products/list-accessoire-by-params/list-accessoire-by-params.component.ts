@@ -14,7 +14,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 })
 export class ListAccessoireByParamsComponent implements OnInit {
 
-  _id: number=-1
+  _id: any
   _feature:string=""
   Produits: Produit[]=[];
   ProduitsDisplay: Produit[]=[];
@@ -34,20 +34,22 @@ export class ListAccessoireByParamsComponent implements OnInit {
   ngOnInit(): void {
     this._id = this.route.snapshot.params['_id'];
     this._feature = this.route.snapshot.params['_feature'];
-    // if(this._feature == "ByAccessorieOfBikers" || this._feature == "ByAccessorieOfBike")
-    // {
-    //   console.log("i am here")
+    if(this._feature == "ByAccessorieOfBikers")
+    {
+      this.getAccessoiresOfBikersByCategorie();
         
-    // }
-    // else if(this._feature == "ByUniver")
-    // {
-    //     this.getBicyclettesByUniver();
-    // }
-    // else{
-    //   this.Produits = []
-    // }
-
-    this.getBicyclettesByCategorie();
+    }
+    else if(this._feature == "ByAccessorieOfBike")
+    {
+        this.getAccessoiresOfBikeByCategorie();
+    }
+    else if(this._feature == "ByMarque")
+    {
+        this.getAccessoireByMarque();
+    }
+    else{
+      this.Produits = []
+    }
 
     this.getMarques()
     this.getUnivers()
@@ -55,8 +57,9 @@ export class ListAccessoireByParamsComponent implements OnInit {
     
   }
 
-  getBicyclettesByCategorie(){
-    this.ProductService.getBicycletteByCategorie(this._id).subscribe(data => {
+  getAccessoiresOfBikeByCategorie(){
+    console.log("Bike")
+    this.ProductService.getAccessoioreVeloByCategorie(this._id).subscribe(data => {
       this.Produits = data.products;
       console.log(this.Produits)
       this.ProduitsDisplay=this.Produits
@@ -64,8 +67,18 @@ export class ListAccessoireByParamsComponent implements OnInit {
     }); 
   }
 
-  getBicyclettesByUniver(){
-    this.ProductService.getBicycletteByUniver(this._id).subscribe(data => {
+  getAccessoiresOfBikersByCategorie(){
+    console.log("Bikers")
+    this.ProductService.getAccessoioreCyclisteByCategorie(this._id).subscribe(data => {
+      this.Produits = data.products;
+      console.log(this.Produits)
+      this.ProduitsDisplay=this.Produits
+      this.pageSlice=this.ProduitsDisplay.slice(0,10);
+    }); 
+  }
+
+  getAccessoireByMarque(){
+    this.ProductService.getAccessoioreByMaque(this._id).subscribe(data => {
       this.Produits = data.products;
       this.ProduitsDisplay=this.Produits
       this.pageSlice=this.ProduitsDisplay.slice(0,10);
