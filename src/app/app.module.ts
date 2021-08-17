@@ -14,7 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { LnguageInterceptor } from './interceptors/language.interceptors';
 import { SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider } from 'angularx-social-login';
 
- //////import material Designe
+ //////import material Designe 
 
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';

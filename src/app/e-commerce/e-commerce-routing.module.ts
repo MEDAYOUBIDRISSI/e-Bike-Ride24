@@ -11,6 +11,8 @@ import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-p
 import { ListAccessoireByParamsComponent } from './products/list-accessoire-by-params/list-accessoire-by-params.component'
 import { AllCmdComponent } from './products/all-cmd/all-cmd.component'
 import { ReviewPageComponent } from './pages/review-page/review-page.component'
+import { ServiceAtHomePageComponent } from './pages/service-at-home-page/service-at-home-page.component'
+import { PaymentComponent } from './products/payment/payment.component'
 
 const routes: Routes = [
   {
@@ -40,6 +42,16 @@ const routes: Routes = [
       {
         path:'',
         component:ReviewPageComponent
+      }
+    ] 
+  },
+  {
+    path:'service-at-home',
+    component:ServiceAtHomePageComponent,
+    children:[
+      {
+        path:'',
+        component:ServiceAtHomePageComponent
       }
     ] 
   },
@@ -93,6 +105,16 @@ const routes: Routes = [
       }
     ] 
   },
+  // {
+  //   path:'payement',
+  //   component:PaymentComponent,
+  //   children:[
+  //     {
+  //       path:'',
+  //       component:PaymentComponent
+  //     }
+  //   ] 
+  // },
   {
     path:'list-bikes/:_feature/:_id',
     component:ListBicycletteByParamsComponent,

@@ -24,10 +24,12 @@ import { ChatBootComponent } from './supporArea/chat-boot/chat-boot.component';
 import { AllCmdComponent } from './products/all-cmd/all-cmd.component';
 import { ListAccessoireByParamsComponent } from './products/list-accessoire-by-params/list-accessoire-by-params.component';
 import { ReviewPageComponent } from './pages/review-page/review-page.component';
+import { ServiceAtHomePageComponent } from './pages/service-at-home-page/service-at-home-page.component';
+import { PaymentComponent } from './products/payment/payment.component';
 
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent, ListAccessoireByParamsComponent, ReviewPageComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent, ListAccessoireByParamsComponent, ReviewPageComponent, ServiceAtHomePageComponent, PaymentComponent],
   imports: [
     CommonModule,
     FormsModule,

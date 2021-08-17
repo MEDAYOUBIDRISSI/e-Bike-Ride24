@@ -1,0 +1,142 @@
+<!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
+<h2 mat-dialog-title>Methode Of Payement</h2>
+<section class="section-content padding-y bg">
+  <div class="container">
+    <div class="row">
+        <main class="col-md-8">      
+          <article class="accordion" id="accordion_pay">
+            <div class="card">
+              <header class="card-header">
+                <img src="assets/images/misc/payments.png" class="float-right" height="24">
+                <label class="form-check collapsed" data-toggle="collapse" data-target="#pay_paynet" aria-expanded="false">
+                  <input class="form-check-input" name="payment-option" checked="" type="radio" value="option2">
+                  <h6 class="title-category">Paypal / Credit Card Of Paypal</h6>
+                </label>
+              </header>
+              <div id="pay_paynet" class="collapse" data-parent="#accordion_pay" >
+              <div class="card-body">
+                <p class="text-center text-muted">Connect your PayPal account and use it to pay your bills. You'll be redirected to PayPal to add your billing information.</p>
+                <p class="text-center">
+                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                  <br><br>
+                </p>
+              </div> <!-- card body .// -->
+              </div> <!-- collapse .// -->
+            </div> <!-- card.// -->
+            <div class="card">
+            <header class="card-header">
+              <img src="https://bootstrap-ecommerce.com/bootstrap-ecommerce-html/images/misc/payment-card.png" class="float-right" height="24">  
+              <label class="form-check collapsed" data-toggle="collapse" data-target="#pay_payme" aria-expanded="false">
+                <input class="form-check-input" name="payment-option" type="radio" value="option2">
+                <h6 class="form-check-label"> Credit Card  </h6>
+              </label>
+            </header>
+            <div id="pay_payme" class="collapse" data-parent="#accordion_pay">
+              <aside>
+                <div class="card mb-12">
+                    <div class="card-body">
+                      <h4 class="card-title mb-12">Payment</h4>
+                      <form role="form">
+                    <div class="form-group">
+                      <label for="username">Name on card</label>
+                      <input type="text" class="form-control" name="username" placeholder="Ex. John Smith" required="" disabled>
+                    </div> <!-- form-group.// -->
+                    <div class="form-group">
+                      <label for="cardNumber">Card number</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" name="cardNumber" placeholder="" disabled>
+                        <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp; 
+                            <i class="fab fa-cc-mastercard"></i> 
+                          </span>
+                        </div>
+                      </div> <!-- input-group.// -->
+                    </div> 
+                    <div class="row">
+                        <div class="col-md flex-grow-0">
+                            <div class="form-group">
+                                <label><span class="hidden-xs">Expiration</span> </label>
+                              <div class="form-inline" style="min-width: 220px">
+                                <select class="form-control" style="width:100px" disabled>
+                              <option>MM</option>
+                              <option>01 - Janiary</option>
+                              <option>02 - February</option>
+                              <option>03 - February</option>
+                            </select>
+                                  <span style="width:20px; text-align: center"> / </span>
+                                  <select class="form-control" style="width:100px" disabled>
+                              <option>YY</option>
+                              <option>2018</option>
+                              <option>2019</option>
+                            </select>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                <input class="form-control" required="" type="text" disabled>
+                            </div> <!-- form-group.// -->
+                        </div>
+                    </div> <!-- row.// -->
+            
+                    <p class="alert alert-danger"> <i class="fa fa-lock"></i> Some secureity information Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+                    <button class="subscribe btn btn-primary btn-block" type="button"> Confirm  </button>
+                     </form>
+                    </div> <!-- card-body.// -->
+                  </div>
+              </aside>
+            </div> <!-- collapse .// -->
+            </div> <!-- card.// -->
+            <div class="card">
+              <header class="card-header">
+                <img src="https://w7.pngwing.com/pngs/859/737/png-transparent-wire-transfer-bank-payment-money-electronic-funds-transfer-bank-blue-text-service.png" class="float-right" height="24">  
+                <label class="form-check collapsed" data-toggle="collapse" data-target="#pay_card" aria-expanded="false">
+                  <input class="form-check-input" name="payment-option" type="radio" value="option1">
+                  <h6 class="form-check-label"> Bank Transfer </h6>
+                </label>
+              </header>
+              <div id="pay_card" class="collapse" data-parent="#accordion_pay" style="">
+                <div class="card-body">
+                  <p class="text-muted">Some instructions about how to pay </p>
+                  <p>
+                    Bank of America, Account number: 12345678912346 <br>
+                    IBAN: 12345, SWIFT: 987654
+                  </p>
+                </div> <!-- card body .// -->
+              </div> <!-- collapse .// -->
+            </div> <!-- card.// -->
+          </article> 
+        </main>
+        <aside class="col-md-4">
+          <div class="card shadow">
+          <div class="card-body">
+            <h4 class="mb-3">Overview</h4>
+            <dl class="dlist-align">
+              <dt class="text-muted">Delivery:</dt>
+              <dd>Pick-up</dd>
+              </dl>
+            <dl class="dlist-align">
+              <dt class="text-muted">Delivery type:</dt>
+              <dd>Standart</dd>
+            </dl>
+            <dl class="dlist-align">
+              <dt class="text-muted">Payment method:</dt>
+              <dd>Cash</dd>
+            </dl>
+            <hr>
+            <dl class="dlist-align">
+              <dt>Total:</dt>
+              <dd class="h5">${{data}}</dd>
+            </dl>
+            
+          </div> <!-- card-body.// -->
+          </div> <!-- card.// -->
+        </aside>
+      </div>
+  </div>
+</section>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="onNoClick()">Cancel</button>
+</mat-dialog-actions>

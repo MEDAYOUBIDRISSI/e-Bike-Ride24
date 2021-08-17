@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Produit } from '../../../e-commerce/class/produit.class'
 import { Commande } from '../../../e-commerce/class/commande.class'
 import { LigneCommande } from '../../../e-commerce/class/ligneCommande.class'
@@ -9,7 +9,8 @@ import { ProductServiceService } from '../../../e-commerce/products/product-serv
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 import { ActivatedRoute,Router } from '@angular/router';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
- 
+import { PaymentComponent } from '../payment/payment.component'
+  
 @Component({
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
@@ -36,12 +37,27 @@ export class ShoppingcartComponent implements OnInit {
 
   constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private route: ActivatedRoute,
-    private router: Router){}
+    private router: Router,
+    public dialog: MatDialog){}
 
   ngOnInit(): void {
-    this.initConfig();
+    // this.initConfig();
     this.getUserAuth()
     this.getCommandeByUser()
+  }
+
+  makePurchase(): void {
+    const dialogRef = this.dialog.open(PaymentComponent, {
+      width:'100%',
+      height: '450px',
+      data: this._total.toString()
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+      {
+        this.commandePayee()
+      }
+    });
   }
 
   getCommandeByUser()
@@ -123,63 +139,64 @@ export class ShoppingcartComponent implements OnInit {
   }
 
 
-  private initConfig(): void {
-    this.payPalConfig = {
-    currency: 'USD',
-    clientId: 'AbgZQT_pay2Z8HH9najEqmextGJbNsoUtF_9Izunbu2zBvxDjHA6lklqAZW1sak5NZsHr2yGm1b2RA_g',
-    createOrderOnClient: (data) => <ICreateOrderRequest>{
-      intent: 'CAPTURE',
-      purchase_units: [
-        {
-          amount: {
-            currency_code: 'USD',
-            value: this._total.toString(),
-            breakdown: {
-              item_total: {
-                currency_code: 'USD',
-                value: this._total.toString()
-              }
-            }
-          }
-        }
-      ]
-    },
-    advanced: {
-      commit: 'true'
-    },
-    style: {
-      label: 'paypal',
-      layout: 'vertical'
-    },
-    onApprove: (data, actions) => {
-      console.log('onApprove - transaction was approved, but not authorized', data, actions);
-      actions.order.get().then(details => {
-        console.log('onApprove - you can get full order details inside onApprove: ', details);
-      });
-    },
-    onClientAuthorization: (data) => {
-      console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-      this.showSuccess = true;
-      this.commandePayee()
+  // private initConfig(): void {
+  //   this.payPalConfig = {
+  //   currency: 'USD',
+  //   clientId: 'AbgZQT_pay2Z8HH9najEqmextGJbNsoUtF_9Izunbu2zBvxDjHA6lklqAZW1sak5NZsHr2yGm1b2RA_g',
+  //   createOrderOnClient: (data) => <ICreateOrderRequest>{
+  //     intent: 'CAPTURE',
+  //     purchase_units: [
+  //       {
+  //         amount: {
+  //           currency_code: 'USD',
+  //           value: this._total.toString(),
+  //           breakdown: {
+  //             item_total: {
+  //               currency_code: 'USD',
+  //               value: this._total.toString()
+  //             }
+  //           }
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   advanced: {
+  //     commit: 'true'
+  //   },
+  //   style: {
+  //     label: 'paypal',
+  //     layout: 'vertical'
+  //   },
+  //   onApprove: (data, actions) => {
+  //     console.log('onApprove - transaction was approved, but not authorized', data, actions);
+  //     actions.order.get().then(details => {
+  //       console.log('onApprove - you can get full order details inside onApprove: ', details);
+  //     });
+  //   },
+  //   onClientAuthorization: (data) => {
+  //     console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+  //     this.showSuccess = true;
+  //     this.commandePayee()
 
-    },
-    onCancel: (data, actions) => {
-      console.log('OnCancel', data, actions);
-    },
-    onError: err => {
-      console.log('OnError', err);
-    },
-    onClick: (data, actions) => {
-      console.log("click wa9ila")
-      console.log('onClick', data, actions);
-    },
-  };
-  }
+  //   },
+  //   onCancel: (data, actions) => {
+  //     console.log('OnCancel', data, actions);
+  //   },
+  //   onError: err => {
+  //     console.log('OnError', err);
+  //   },
+  //   onClick: (data, actions) => {
+  //     console.log("click wa9ila")
+  //     console.log('onClick', data, actions);
+  //   },
+  // };
+  // }
 
   commandePayee()
   {
     this.ProductService.updateCommande(this.Commande._id,this.Commande).subscribe(data => {
       alert("commande Validee")
+      this.ngOnInit()
     }, error => console.log(error));
   }
 
