@@ -30,7 +30,7 @@
                     <label class="custom-control custom-checkbox" *ngFor="let marque of marques">
                       <input type="checkbox" class="custom-control-input" [value]="marque._id" name="BrandList" (change)="OnChange($event)" [(ngModel)]="marque.Checked">
                       <div class="custom-control-label">{{marque.libelle}}  
-                          <b class="badge badge-pill badge-light float-right">120</b>  
+                           
                     </div>
                     </label>
                 </div> <!-- inner.// -->
@@ -45,7 +45,7 @@
                     <label class="custom-control custom-checkbox" *ngFor="let univer of univers">
                         <input type="checkbox" class="custom-control-input" [value]="univer._id" name="UniverList" (change)="OnChange($event)" [(ngModel)]="univer.Checked">
                         <div class="custom-control-label">{{univer.libelle}}  
-                            <b class="badge badge-pill badge-light float-right">120</b>  </div>
+                             </div>
                       </label>
                 </div> <!-- inner.// -->
             </div>
@@ -95,25 +95,16 @@
     </aside>
 
     <main class="col-md-10">
-        <header class="mb-3">
-                <div class="form-inline">
-                    <strong class="mr-md-auto">{{ProduitsDisplay.length}} Items found </strong>
-                    <select class="mr-2 form-control">
-                        <option>Latest items</option>
-                        <option>Trending</option>
-                        <option>Most Popular</option>
-                        <option>Cheapest</option>
-                    </select>
-                    <div class="btn-group">
-                        <a href="page-listing-grid.html" class="btn btn-light" data-toggle="tooltip" title="List view"> 
-                            <i class="fa fa-bars"></i></a>
-                        <a href="page-listing-large.html" class="btn btn-light active" data-toggle="tooltip" title="Grid view"> 
-                            <i class="fa fa-th"></i></a>
-                    </div>
-                </div>
+        <header class="mb-3" style="margin-top: 10px;"> 
+            <div class="form-inline">
+                <strong class="mr-md-auto">{{ProduitsDisplay.length}} Items found </strong>
+                <select class="mr-2 form-control" id="sort-by" (change)="sort($event)">
+                    <option value="">Sort By</option>
+                    <option value="High">High to Low Pricing</option>
+                    <option value="Low">Low to High Pricing</option>
+                </select>
+            </div>
         </header>
-
-
         <div class="row">
             <div class="col-md-4" *ngFor = "let produit of ProduitsDisplay">
                 <figure class="card card-product-grid" (click)="DetailProduct(produit._id,produit.typeProduct)">
@@ -128,7 +119,7 @@
                                 <small class="text-muted">/per item</small>
                             </div> 
                             
-                            <p class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Min Order)</small></p>
+                            <p class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Max Order)</small></p>
                             
                             <p class="text-muted ">Marque : {{ produit.Marque?.libelle }}</p>
                             <hr>
@@ -137,11 +128,7 @@
                                 <span class="tag">{{produit.categorie.libelle}}</span> 
                                 <span class="tag">Modal {{ produit.anneModel }} </span> 
                             </p>
-                            <label class="custom-control mb-3 custom-checkbox">
-                              <input type="checkbox" class="custom-control-input">
-                              <div class="custom-control-label">Add to compare
-                              </div>
-                            </label>
+                            
                             <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
                     </figcaption>
                 </figure>

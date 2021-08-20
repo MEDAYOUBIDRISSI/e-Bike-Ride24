@@ -222,4 +222,9 @@ export class ShoppingcartComponent implements OnInit {
       }
   }
 
+  ContinueShopping()
+  {
+    this.router.navigate(['all-products']);
+  }
+
 }

@@ -38,5 +38,5 @@ import { PaymentComponent } from './products/payment/payment.component';
     NgxPayPalModule,
     MatPaginatorModule
   ]
-})
+}) 
 export class ECommerceModule { }

@@ -230,4 +230,30 @@ export class ListAccessoireByParamsComponent implements OnInit {
       this.sliceChange()
   }
 
+  sort(event: any) {
+    switch (event.target.value) {
+      case "Low":
+        {
+          this.ProduitsDisplay = this.ProduitsDisplay.sort((low, high) => low.prixVent - high.prixVent);
+          this.sliceChange()
+          break;
+        }
+
+      case "High":
+        {
+          this.ProduitsDisplay = this.ProduitsDisplay.sort((low, high) => high.prixVent - low.prixVent);
+          this.sliceChange()
+          break;
+        }
+
+      default: {
+         this.ngOnInit()
+        break;
+      }
+
+    }
+    return this.ProduitsDisplay;
+
+  }
+
 }

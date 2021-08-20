@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {PageEvent} from '@angular/material/paginator'; 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
-
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { User } from '../../class/user.class'
+import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
@@ -24,11 +25,13 @@ export class AllProductsComponent implements OnInit {
   marques: Marque[]=[];
   univers: Univer[]=[];
   categories: Categorie[]=[];
+  public User: User={}
+  _idAuth = localStorage.getItem('jwt-IDUser')
 
   MinPrice:any;
   MaxPrice:any;
 
-  constructor(private ProductService: ProductServiceService,
+  constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private router: Router,public dialog: MatDialog) { } 
 
     ngOnInit(): void {
@@ -36,6 +39,13 @@ export class AllProductsComponent implements OnInit {
     this.getMarques()
     this.getUnivers()
     this.getCategories()
+    this.getUserAuth()
+  }
+
+  getUserAuth(){
+    this.UserServices.getUserAuth(this._idAuth).subscribe(data => {
+      this.User = data.User;
+    });
   }
 
   getProduits(){
@@ -192,6 +202,53 @@ export class AllProductsComponent implements OnInit {
     {
         this.ProduitsDisplay = this.ProduitsDisplay.filter(item => parseFloat(item.prixVent+"") >= this.MinPrice && parseFloat(item.prixVent+"")<=this.MaxPrice);
         this.sliceChange()
+    }
+
+    sort(event: any) {
+      switch (event.target.value) {
+        case "Low":
+          {
+            this.ProduitsDisplay = this.ProduitsDisplay.sort((low, high) => low.prixVent - high.prixVent);
+            this.sliceChange()
+            break;
+          }
+  
+        case "High":
+          {
+            this.ProduitsDisplay = this.ProduitsDisplay.sort((low, high) => high.prixVent - low.prixVent);
+            this.sliceChange()
+            break;
+          }
+  
+        default: {
+           this.getProduits()
+          break;
+        }
+  
+      }
+      return this.ProduitsDisplay;
+  
+    }
+
+    public sendEmail(e: Event) {
+      e.preventDefault();
+      emailjs.sendForm('service_vt22frc', 'template_05unfsm', e.target as HTMLFormElement, 'user_6BDcLxWaAYS5IaMc9pEA7')
+        .then((result: EmailJSResponseStatus) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        });
+    }
+
+    user_name:any
+    user_email:any
+    product_id:any
+    SendMail(ido: any)
+    {
+      this.user_name=this.User.nom+" "+this.User.prenom
+      this.user_email=this.User.email
+      this.product_id=ido
+       console.log(ido)
     }
 
 
