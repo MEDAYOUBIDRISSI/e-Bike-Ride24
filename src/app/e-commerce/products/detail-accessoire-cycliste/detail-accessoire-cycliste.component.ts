@@ -6,6 +6,8 @@ import { User } from '../../class/user.class'
 import { ProductServiceService } from '../product-service.service'
 import { UserServicesService } from '../../services/user-services.service'
 import { ActivatedRoute,Router } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+ import {ImgZoomComponent} from "../img-zoom/img-zoom.component"
 
 @Component({
   selector: 'app-detail-accessoire-cycliste',
@@ -25,6 +27,7 @@ export class DetailAccessoireCyclisteComponent implements OnInit {
  
   constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -105,6 +108,16 @@ export class DetailAccessoireCyclisteComponent implements OnInit {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([currentUrl]);
+    }
+
+    
+    imageZoom(url:any)
+    {
+      const dialogRef = this.dialog.open(ImgZoomComponent,{
+        width:'70%',
+        height: '400px',
+        data: {img:this._url}
+      });
     }
 
 }

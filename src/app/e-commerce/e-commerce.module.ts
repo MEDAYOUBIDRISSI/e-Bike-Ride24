@@ -26,17 +26,22 @@ import { ListAccessoireByParamsComponent } from './products/list-accessoire-by-p
 import { ReviewPageComponent } from './pages/review-page/review-page.component';
 import { ServiceAtHomePageComponent } from './pages/service-at-home-page/service-at-home-page.component';
 import { PaymentComponent } from './products/payment/payment.component';
-
+import { ContactSupplierComponent } from './products/contact-supplier/contact-supplier.component';
+import { ImgZoomComponent } from './products/img-zoom/img-zoom.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { PrintCommandeComponent } from './products/print-commande/print-commande.component';
+import { NotificationComponent } from './products/notification/notification.component';
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent, ListAccessoireByParamsComponent, ReviewPageComponent, ServiceAtHomePageComponent, PaymentComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent, ListAccessoireByParamsComponent, ReviewPageComponent, ServiceAtHomePageComponent, PaymentComponent, ContactSupplierComponent, ImgZoomComponent, PrintCommandeComponent, NotificationComponent],
   imports: [
     CommonModule,
     FormsModule,
     ECommerceRoutingModule,
     TranslateModule,
     NgxPayPalModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgxImageZoomModule
   ]
 }) 
 export class ECommerceModule { }

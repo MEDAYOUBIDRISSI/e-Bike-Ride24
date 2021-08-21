@@ -6,6 +6,8 @@ import { User } from '../../../e-commerce/class/user.class'
 import { ProductServiceService } from '../../../e-commerce/products/product-service.service'
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 import { ActivatedRoute,Router } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+ import {PrintCommandeComponent} from "../print-commande/print-commande.component"
 
 @Component({
   selector: 'app-all-cmd',
@@ -23,6 +25,7 @@ export class AllCmdComponent implements OnInit {
 
   constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
     private router: Router){}
 
   ngOnInit(): void {
@@ -47,5 +50,17 @@ export class AllCmdComponent implements OnInit {
         console.log(this.LigneCommandes)
     }, error => console.log(error));
   }
+
+  // printPage() {
+  //   window.print();
+  // }
+  printPage(cmd:any)
+    {
+      const dialogRef = this.dialog.open(PrintCommandeComponent,{
+        width:'100%',
+        height: '100%',
+        data:{cmd:cmd}
+      });
+    }
 
 }

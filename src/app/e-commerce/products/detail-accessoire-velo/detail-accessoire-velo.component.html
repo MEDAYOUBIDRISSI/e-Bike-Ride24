@@ -5,7 +5,7 @@
           <div class="card">
             <article class="gallery-wrap"> 
                 <div class="img-big-wrap">
-                  <div> <a href="#"><img [src]="_url"></a></div>
+                  <div (click)="imageZoom(_url)"> <a><img [src]="_url"></a></div>
                 </div> <!-- slider-product.// -->
                 <div class="thumbs-wrap">
                     <a class="item-thumb" *ngFor = "let url of Produit.Image"> 

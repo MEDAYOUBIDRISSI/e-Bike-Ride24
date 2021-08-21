@@ -40,6 +40,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 
 export function HttpLoaderFactory(http:HttpClient)
@@ -87,6 +88,7 @@ export function HttpLoaderFactory(http:HttpClient)
     MatDialogModule,
     MatPaginatorModule,
     NgxPayPalModule,
+    NgxImageZoomModule,
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,

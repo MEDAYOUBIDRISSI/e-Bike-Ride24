@@ -1,0 +1,105 @@
+
+  
+  <div class="p-grid p-nogutter">
+    <header class="section-header">
+        <section class="header-main border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-3 col-md-12">
+                        <a href="#" class="brand-wrap">
+                            <img src="assets/images/logo3661.png">
+                        </a> <!-- brand-wrap.// -->
+                    </div> <!-- col.// -->
+                </div> <!-- row.// -->
+            </div> <!-- container.// -->
+        </section> <!-- header-main .// -->
+    </header>
+  
+    <div class="p-col">
+      <h2>N° Order: {{data.cmd.commande._id}}</h2>
+      <div class="address">
+        <p>contact@bikeRide24.com</p>
+        <p>Av. Dr. Ribeiro de Magalhães, 1391</p>
+        <p>Centro Comercial 123, Loja BD</p>
+        <p>4610-108 Felgueiras</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="p-grid p-nogutter items-group">
+    <div class="p-col-8">
+      <div class="p-grid p-nogutter">
+        <p class="p-col-12 label">{{data.cmd.commande.user.nom}} {{data.cmd.commande.user.prenom}}</p>
+      </div>
+    </div>
+    <div class="p-col-4">
+      <div class="p-grid p-nogutter"> 
+        Phone: {{data.cmd.commande.user.tel}} <br> Email: {{data.cmd.commande.user.email}} <br> Adresse: {{data.cmd.commande.user.adresse}} 
+      </div>
+    </div>
+  </div>
+  
+  <div class="p-grid p-nogutter">
+    <div class="p-col-12">
+      <div class="p-grid p-nogutter items-group">
+        <div class="p-col">
+          <div class="p-grid p-nogutter">
+            <p class="p-col-12 label">Product(s)</p>
+          </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tbody>
+                    <tr *ngFor = "let ligneCommande of data.cmd.ligneCommandeTotal">
+                        <td width="65">
+                            <img [src]="ligneCommande.product.Image[0]" class="img-xs border">
+                        </td>
+                        <td> 
+                            <p class="title mb-0">{{ligneCommande.product.libelle}} (x {{ligneCommande.qte}} unite)</p>
+                            <var class="price text-muted">MAD {{ligneCommande.product.prixVent * ligneCommande.qte}}</var>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div> 
+      </div>
+    </div>
+  </div>
+
+  <div class="p-grid p-nogutter items-group">
+    <div class="p-col">
+      <p class="label">Payment:</p>
+      <div class="p-grid p-nogutter">
+        <span class="text-success">
+            <i class="fab fa-lg fa-cc-visa"></i>
+            Visa  **** 4216  
+        </span>
+        <p>Subtotal: $356 <br>
+            Shipping fee:  $56 <br> 
+            <span class="b">Total:  $456 </span>
+        </p>
+  </div>
+    </div>
+  </div>
+  
+  <div class="p-grid p-nogutter items-group">
+    <div class="p-col">
+      <p class="label">General conditions:</p>
+      <ul class="disclaimer">
+        <li>Deadline to withdraw 90 days</li>
+         <li>90 Day Warranty</li>
+         <li>This assistance is only given to those who present this document</li>
+         <li>The price is increased by 10% every 30 days after the withdrawal period (storage fee)</li>
+         <li>The customer data, mentioned above, are registered at N Reparações for communication purposes only.
+           in relation to your assistance and billing
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="p-grid p-nogutter">
+    <div class="p-col">
+      <p class="disclaimer signature-field">I declare that I have read and agree with the provisions of this document on {{data.cmd.commande.createdAt | date: 'dd-MM-yyyy'}}</p>
+      <a (click)="printPage()" class="float-right"> <i class="fa fa-print"></i> Print</a>
+    </div>
+  </div>

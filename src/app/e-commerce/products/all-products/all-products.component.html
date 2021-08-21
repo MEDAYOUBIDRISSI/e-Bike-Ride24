@@ -129,34 +129,7 @@
                                 <span class="tag">{{produit.categorie.libelle}}</span> 
                                 <span class="tag">Modal {{ produit.anneModel }} </span> 
                             </p>
-                            <!-- <label class="custom-control mb-3 custom-checkbox">
-                              <input type="checkbox" class="custom-control-input">
-                              <div class="custom-control-label">Add to compare
-                              </div>
-                            </label> -->
-                            <a (click) = "SendMail(produit._id)" data-toggle="modal" [attr.data-target]="'#a' + produit._id" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
-                            <!-- Modal -->
-                            <div class="modal fade" id="{{'a'+produit._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Rools of </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        </div>
-                                        <form class="contact-form" (submit)="sendEmail($event)">
-                                            <input type="hidden" [(ngModel)]="user_name" name="user_name">
-                                            <input type="hidden" [(ngModel)]="user_email" name="user_email">
-                                            <input type="hidden" [(ngModel)]="product_id" name="product_id">
-                                            <label>Message</label>
-                                            <textarea name="message"></textarea>
-                                            <input type="submit" value="Send">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        <!-- End Modal -->
+                            <a (click)="SendMail(produit)" style="color:white" class="btn btn-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
                     </figcaption>
                 </figure>
             </div>
