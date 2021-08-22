@@ -42,7 +42,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 
-
 export function HttpLoaderFactory(http:HttpClient)
 {
   return new TranslateHttpLoader(http);
@@ -82,6 +81,7 @@ export function HttpLoaderFactory(http:HttpClient)
     MatSidenavModule,
     MatGridListModule,
     MatStepperModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatMenuModule,

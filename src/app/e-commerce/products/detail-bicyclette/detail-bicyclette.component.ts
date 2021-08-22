@@ -8,7 +8,7 @@ import { UserServicesService } from '../../services/user-services.service'
 import { ActivatedRoute,Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
  import {ImgZoomComponent} from "../img-zoom/img-zoom.component"
- import {NotificationComponent} from "../notification/notification.component"
+ import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-detail-bicyclette',
@@ -29,7 +29,8 @@ export class DetailBicycletteComponent implements OnInit {
   constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private router: Router) { }
+    private router: Router,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this._idAuth = localStorage.getItem('jwt-IDUser')
@@ -66,16 +67,15 @@ export class DetailBicycletteComponent implements OnInit {
 
   createLigneCommand()
   {
-    this.ShowNotification("success")
-    // this.LigneCommande.qte=this._qte
-    // this.LigneCommande.commande=this.Commande
-    // this.LigneCommande.product=this.Produit
-    // this.ProductService.createLigneCommande(this.LigneCommande).subscribe( data =>{
-    //   console.log(data);
-    //   this.ShowNotification("success")
-    //  // this.reloadComponent()
-    // },
-    // error => console.log(error));
+    this.LigneCommande.qte=this._qte
+    this.LigneCommande.commande=this.Commande
+    this.LigneCommande.product=this.Produit
+    this.ProductService.createLigneCommande(this.LigneCommande).subscribe( data =>{
+      console.log(data);
+      this.ShowNotification('Panier success','Close','4000',"custom-success-style")
+      this.reloadComponent()
+    },
+    error => this.ShowNotification(error,'Close','4000',"custom-error-style"));
 
   }
 
@@ -87,7 +87,7 @@ export class DetailBicycletteComponent implements OnInit {
     }
     else
     {
-      alert("maxxx")
+      this.ShowNotification('There is no more in the Stock','Close','4000',"custom-plus-mins-style")
     }
   }
 
@@ -99,7 +99,7 @@ export class DetailBicycletteComponent implements OnInit {
     }
     else
     {
-      alert("minnnnn")
+      this.ShowNotification('1 is the smallest amount possible','Close','4000',"custom-plus-mins-style")
     }
   }
 
@@ -124,12 +124,14 @@ export class DetailBicycletteComponent implements OnInit {
       });
     }
 
-    ShowNotification(type:any)
+    ShowNotification(content:any, action:any, duration:any,type:any)
     {
-      const dialogRef = this.dialog.open(NotificationComponent,{
-        width:'280px',
-        height: '320px',
-        data: {type:type}
+      let sb = this.snackBar.open(content, action, {
+        duration: duration,
+        panelClass: [type]
+      });
+      sb.onAction().subscribe(() => {
+        sb.dismiss();
       });
     }
 }

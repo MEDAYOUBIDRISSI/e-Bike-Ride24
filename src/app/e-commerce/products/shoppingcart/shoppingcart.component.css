@@ -1,0 +1,33 @@
+
+ul.custom-success {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+  ul li {
+    margin: 10px;
+  }
+  
+  ::ng-deep .custom-success-style{
+    background-color:rgb(108, 201, 66);
+    color:white;
+  }
+
+  ul.custom-error {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+  
+  ::ng-deep .custom-error-style{
+    background-color:brown;
+    color:white;
+  }
+
+  ::ng-deep .custom-plus-mins-style{
+    background-color:#008080;
+    color:white;
+  }
+  ::ng-deep .mat-button-wrapper{
+      color: white;
+  }

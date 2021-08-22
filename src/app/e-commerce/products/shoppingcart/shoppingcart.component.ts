@@ -10,7 +10,8 @@ import { UserServicesService } from '../../../e-commerce/services/user-services.
 import { ActivatedRoute,Router } from '@angular/router';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { PaymentComponent } from '../payment/payment.component'
-  
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 @Component({
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
@@ -19,7 +20,7 @@ import { PaymentComponent } from '../payment/payment.component'
 export class ShoppingcartComponent implements OnInit {
 
   _ligneCommandeCharge:boolean=false
-  _qte:number=0
+  _qte:number=1
   _totalePrice:number=0
   _discount:number=0
   _total:number=0
@@ -38,7 +39,8 @@ export class ShoppingcartComponent implements OnInit {
   constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog){}
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     // this.initConfig();
@@ -97,18 +99,32 @@ export class ShoppingcartComponent implements OnInit {
 
   addQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
   {
-    this.ProductService.LigneCommandeAddQte(_idlignecommande, LigneCommande).subscribe( data =>{
-      this.ngOnInit()
-      this.TotalAfterSearche()
-    }, error => console.log(error));
+    if(parseInt(LigneCommande.qte+"") < parseInt(LigneCommande.product?.qteStock+""))
+    {
+      this.ProductService.LigneCommandeAddQte(_idlignecommande, LigneCommande).subscribe( data =>{
+        this.ngOnInit()
+        this.TotalAfterSearche()
+      }, error => console.log(error));
+    }
+    else
+    {
+      this.ShowNotification('There is no more in the Stock','Close','4000',"custom-plus-mins-style")
+    }
   }
 
   minusQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
   {
-    this.ProductService.LigneCommandeMinusQte(_idlignecommande, LigneCommande).subscribe( data =>{
-      this.ngOnInit()
-      this.TotalAfterSearche()
-    }, error => console.log(error));
+    if(parseInt(LigneCommande.qte+"")>1)
+    {
+      this.ProductService.LigneCommandeMinusQte(_idlignecommande, LigneCommande).subscribe( data =>{
+        this.ngOnInit()
+        this.TotalAfterSearche()
+      }, error => console.log(error));
+    }
+    else
+    {
+      this.ShowNotification('1 is the smallest amount possible','Close','4000',"custom-plus-mins-style")
+    }
   }
 
   reloadComponent() 
@@ -226,5 +242,16 @@ export class ShoppingcartComponent implements OnInit {
   {
     this.router.navigate(['all-products']);
   }
+
+  ShowNotification(content:any, action:any, duration:any,type:any)
+    {
+      let sb = this.snackBar.open(content, action, {
+        duration: duration,
+        panelClass: [type]
+      });
+      sb.onAction().subscribe(() => {
+        sb.dismiss();
+      });
+    }
 
 }

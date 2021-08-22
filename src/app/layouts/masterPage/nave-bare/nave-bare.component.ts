@@ -11,6 +11,7 @@ import { ProductServiceService } from '../../../e-commerce/products/product-serv
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 import { SocialAuthService } from "angularx-social-login"; 
 import { Router } from '@angular/router';
+import { MatSnackBar } from "@angular/material/snack-bar";
 declare var jQuery:any;
 declare var $:any;
 
@@ -41,7 +42,7 @@ export class NaveBareComponent implements OnInit {
   MarqueOfBike: Marque[]=[];
   MarqueOfAccessoire: Marque[]=[];
   constructor(private authService: SocialAuthService,private ProductService: ProductServiceService,
-  private UserServices: UserServicesService,private router: Router){}
+  private UserServices: UserServicesService,private router: Router,private snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     this.lang = localStorage.getItem('lang') || 'en';
@@ -104,6 +105,7 @@ export class NaveBareComponent implements OnInit {
   deleteLigneCommande(_id: number){
     this.ProductService.deleteLigneCommande(_id).subscribe( data => {
       this.getCommandeByUser()
+      this.ShowNotification('Product Delete from Panier','Close','4000',"custom-success-style")
     }, error => console.log(error));
   }
 
@@ -130,16 +132,30 @@ export class NaveBareComponent implements OnInit {
 
   addQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
   {
-    this.ProductService.LigneCommandeAddQte(_idlignecommande, LigneCommande).subscribe( data =>{
-      this.ngOnInit()
-    }, error => console.log(error));
+    if(parseInt(LigneCommande.qte+"") < parseInt(LigneCommande.product?.qteStock+""))
+    {
+      this.ProductService.LigneCommandeAddQte(_idlignecommande, LigneCommande).subscribe( data =>{
+        this.ngOnInit()
+      }, error => console.log(error));
+    }
+    else
+    {
+      this.ShowNotification('There is no more in the Stock','Close','4000',"custom-plus-mins-style")
+    }
   }
 
   minusQuantity(_idlignecommande:number,LigneCommande:LigneCommande)
   {
-    this.ProductService.LigneCommandeMinusQte(_idlignecommande, LigneCommande).subscribe( data =>{
-      this.ngOnInit()
-    }, error => console.log(error));
+    if(parseInt(LigneCommande.qte+"")>1)
+    {
+      this.ProductService.LigneCommandeMinusQte(_idlignecommande, LigneCommande).subscribe( data =>{
+        this.ngOnInit()
+      }, error => console.log(error));
+    }
+    else
+    {
+      this.ShowNotification('1 is the smallest amount possible','Close','4000',"custom-plus-mins-style")
+    }
   }
 
   totalPrice()
@@ -245,4 +261,15 @@ export class NaveBareComponent implements OnInit {
     this.router.navigate(['list-Accessoires',"ByAccessorieOfBikers", _id]);
     this.anotherReloadComponent("list-Accessoires/ByAccessorieOfBikers/"+_id)
   }
+
+  ShowNotification(content:any, action:any, duration:any,type:any)
+    {
+      let sb = this.snackBar.open(content, action, {
+        duration: duration,
+        panelClass: [type]
+      });
+      sb.onAction().subscribe(() => {
+        sb.dismiss();
+      });
+    }
 }
