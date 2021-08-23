@@ -4,20 +4,30 @@
             <aside class="col-md-6">
           <div class="card">
             <article class="gallery-wrap"> 
-                <div class="img-big-wrap">
-                  <div (click)="imageZoom(_url)"> <a><img [src]="_url"></a></div>
-                </div> <!-- slider-product.// -->
-                <div class="thumbs-wrap">
-                    <a class="item-thumb" *ngFor = "let url of Produit.Image"> 
-                      <img [src]="url" (click)="changeImage(url)">
-                    </a>
-                </div> <!-- slider-nav.// -->
+              <div class="img-big-wrap">
+                <div (click)="imageZoom(_url)">
+                  <lib-ngx-image-zoom
+                      [thumbImage]=_url
+                      [fullImage]=_url
+                      [magnification]="2"
+                      [enableScrollZoom]="true"
+                      [enableLens]="true"
+                      [lensWidth]="200"
+                  ></lib-ngx-image-zoom>
+                </div>
+              </div> <!-- slider-product.// -->
+              <div class="thumbs-wrap">
+                  <a class="item-thumb" *ngFor = "let url of Produit.Image"> 
+                    <img [src]="url" (mouseover)="changeImage(url)">
+                  </a>
+              </div>
             </article>
           </div>
             </aside>
             <main class="col-md-6">
           <article class="product-info-aside">
-                <h2 class="title mt-3">{{Produit.libelle}} </h2>
+            <h2 class="title mt-3">{{Produit.libelle}} </h2>
+            <span class="text-muted">{{ Produit.hideline }}</span> 
                 <div class="rating-wrap my-3">
                     <ul class="rating-stars">
                         <li style="width:80%" class="stars-active"> 
@@ -31,33 +41,29 @@
                             <i class="fa fa-star"></i> 
                         </li>
                     </ul>
-                    <small class="label-rating text-muted">132 reviews</small>
+                    <small class="label-rating text-muted">132 Sales</small>
                     <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> {{ Produit.qteStock }} orders </small>
                 </div> <!-- rating-wrap.// -->
                 <div class="mb-3"> 
-                    <var class="price h4">USD {{ Produit.prixVent }},00</var> 
-                    <span class="text-muted">USD 562.65 incl. VAT</span> 
+                    <var class="price h4">USD {{ Produit.prixVent }},00</var>
                 </div>
-                <p>Compact sport shoe for running, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat </p>
+                <p>{{Produit.description}}</p>
   
                 <dl class="row">
                   <dt class="col-sm-3">Manufacturer</dt>
-                  <dd class="col-sm-9"><a href="#">Great textile Ltd.</a></dd>
+                  <dd class="col-sm-9"><a>{{Produit.Marque.libelle}}</a></dd>
   
+                  <dt class="col-sm-3">Code Bare</dt>
+                  <dd class="col-sm-9">{{Produit.codeBare}}</dd>
+
                   <dt class="col-sm-3">Article number</dt>
-                  <dd class="col-sm-9">596 065</dd>
+                  <dd class="col-sm-9">{{Produit._id}}</dd>
   
                   <dt class="col-sm-3">Guarantee</dt>
-                  <dd class="col-sm-9">2 year</dd>
+                  <dd class="col-sm-9">1 year</dd>
   
                   <dt class="col-sm-3">Delivery time</dt>
-                  <dd class="col-sm-9">3-4 days</dd>
-  
+                  <dd class="col-sm-9">20-40 days</dd>
                   <dt class="col-sm-3">Availabilty</dt>
                   <dd class="col-sm-9">in Stock</dd>
                 </dl>
@@ -78,8 +84,8 @@
                           <a (click)="createCommand()"  class="btn  btn-primary" style="color: white;"> 
                               <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span> 
                           </a>
-                          <a href="#" class="btn btn-light">
-                      <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span> 
+                          <a (click)="SendMail(Produit)" class="btn btn-light">
+                            <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span> 
                           </a>
                       </div> 
                   </div>
@@ -92,44 +98,37 @@
   <section class="section-name padding-y bg">
     <div class="container">
       <div class="row">
-          <div class="col-md-8">
-              <h5 class="title-description">Description</h5>
-              <p>
-                  Lava stone grill, suitable for natural gas, with cast-iron cooking grid, piezo ignition, stainless steel burners, water tank, and thermocouple. Thermostatic adjustable per zone. Comes complete with lava rocks. Adjustable legs. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. 
-              </p>
-              <ul class="list-check">
-              <li>Material: Stainless steel</li>
-              <li>Weight: 82kg</li>
-              <li>built-in drip tray</li>
-              <li>Open base for pots and pans</li>
-              <li>On request available in propane execution</li>
-              </ul>
-  
-              <h5 class="title-description">Specifications</h5>
-              <table class="table table-bordered">
-                  <tr> <th colspan="2">Basic specs</th> </tr>
-                  <tr> <td>Type of energy</td><td>Lava stone</td> </tr>
-                  <tr> <td>Number of zones</td><td>2</td> </tr>
-                  <tr> <td>Automatic connection	</td> <td> <i class="fa fa-check text-success"></i> Yes </td></tr>
-  
-                  <tr> <th colspan="2">Dimensions</th> </tr>
-                  <tr> <td>Width</td><td>500mm</td> </tr>
-                  <tr> <td>Depth</td><td>400mm</td> </tr>
-                  <tr> <td>Height	</td><td>700mm</td> </tr>
-  
-                  <tr> <th colspan="2">Materials</th> </tr>
-                  <tr> <td>Exterior</td><td>Stainless steel</td> </tr>
-                  <tr> <td>Interior</td><td>Iron</td> </tr>
-  
-                  <tr> <th colspan="2">Connections</th> </tr>
-                  <tr> <td>Heating Type</td><td>Gas</td> </tr>
-                  <tr> <td>Connected load gas</td><td>15 Kw</td> </tr>
-  
-              </table>
-          </div> 
+        <div class="col-md-8">
+          <h5 class="title-description">Description</h5>
+          <p>
+            {{Produit.description}}. 
+          </p>
+          <ul class="list-check">
+          <li>Material: Stainless steel</li>
+          <li>Weight: 82kg</li>
+          <li>built-in drip tray</li>
+          <li>Open base for pots and pans</li>
+          <li>On request available in propane execution</li>
+          </ul>
+
+          <h5 class="title-description">Specifications</h5>
+          <table class="table table-bordered">
+              <tr> <th colspan="2">Basic specs</th> </tr>
+              <tr> <td>Type of Product</td><td>{{Produit.typeProduct}}</td> </tr>
+              <tr> <td>Marque</td><td>{{Produit.Marque.libelle}}</td> </tr>
+              <tr> <td>Model</td><td>{{Produit.anneModel}}</td> </tr>
+              <tr> <td>Categorie	</td> <td> <i class="fa fa-check text-success"></i> {{Produit.categorie.libelle}} </td></tr>
+              <tr> <td>User	</td> <td> <i class="fa fa-check text-success"></i> {{Produit.Univer.libelle}} </td></tr>
+
+              <tr> <th colspan="2">Connections</th> </tr>
+              <tr> <td>#ID Of Article</td><td>{{Produit._id}}</td> </tr>
+              <tr> <td>Code Bare</td><td>{{Produit.codeBare}}</td> </tr>
+              <tr> <td>Libelle</td><td>{{Produit.libelle}}</td> </tr>
+              <tr> <td>Hideline</td><td>{{Produit.hideline}}</td> </tr>
+              <tr> <td>Stock</td><td>{{Produit.qteStock}}</td> </tr>
+
+          </table>
+      </div> 
           
           <aside class="col-md-4">
   

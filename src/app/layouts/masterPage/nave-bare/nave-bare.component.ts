@@ -70,11 +70,13 @@ export class NaveBareComponent implements OnInit {
   changeLanguageToEnglish()
   {
     localStorage.setItem("lang","en");
+    this.ShowNotification('Language has changed','Close','4000',"custom-plus-mins-style")
     window.location.reload();
   }
   changeLanguageToFrensh()
   {
     localStorage.setItem("lang","fr");
+    this.ShowNotification('Language has changed','Close','4000',"custom-plus-mins-style")
     window.location.reload();
   }
 
@@ -272,4 +274,16 @@ export class NaveBareComponent implements OnInit {
         sb.dismiss();
       });
     }
+
+    _MotsCles:any
+    _Type:any="all"
+    SearcheProduct(){ 
+      if(this._MotsCles=="")
+      {
+        this.ShowNotification('Nothing in Search','Close','4000',"custom-error-style")
+      }
+      else
+        this.router.navigate(['Searche', this._MotsCles,this._Type]);
+        this.anotherReloadComponent("Searche/"+this._MotsCles+"/"+this._Type)
+    } 
 }

@@ -12,7 +12,7 @@ import { ListAccessoireByParamsComponent } from './products/list-accessoire-by-p
 import { AllCmdComponent } from './products/all-cmd/all-cmd.component'
 import { ReviewPageComponent } from './pages/review-page/review-page.component'
 import { ServiceAtHomePageComponent } from './pages/service-at-home-page/service-at-home-page.component'
-import { PaymentComponent } from './products/payment/payment.component'
+import { SearchePageComponent } from './products/searche-page/searche-page.component'
 
 const routes: Routes = [
   {
@@ -142,6 +142,16 @@ const routes: Routes = [
       {
         path:'',
         component:AllCmdComponent
+      }
+    ] 
+  },
+  {
+    path:'Searche/:_MotsCles/:_Type',
+    component:SearchePageComponent,
+    children:[
+      {
+        path:'',
+        component:SearchePageComponent
       }
     ] 
   }

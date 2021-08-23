@@ -109,28 +109,28 @@
 
         <div class="row">
             <div class="col-md-4" *ngFor = "let produit of ProduitsDisplay">
-                <figure class="card card-product-grid" (click)="DetailProduct(produit._id,produit.typeProduct)">
-                    <div class="img-wrap"> 
+                <figure class="card card-product-grid" >
+                    <div class="img-wrap" (click)="DetailProduct(produit._id,produit.typeProduct)"> 
                         <!-- <span class="badge badge-danger"> NEW </span> -->
                         <img [src]="produit.Image[0]">
                     </div> 
                     <figcaption class="info-wrap">
-                            <a href="#" class="title mb-2">{{ produit.libelle }}</a>
-                            <div class="price-wrap">
+                            <a (click)="DetailProduct(produit._id,produit.typeProduct)" class="title mb-2">{{ produit.libelle }}</a>
+                            <div (click)="DetailProduct(produit._id,produit.typeProduct)" class="price-wrap">
                                 <span class="price">${{produit.prixVent}}</span> 
                                 <small class="text-muted">/per item</small>
                             </div> 
                             
-                            <p class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Max Order)</small></p>
+                            <p (click)="DetailProduct(produit._id,produit.typeProduct)" class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Max Order)</small></p>
                             
-                            <p class="text-muted ">Marque : {{ produit.Marque?.libelle }}</p>
+                            <p (click)="DetailProduct(produit._id,produit.typeProduct)" class="text-muted ">Marque : {{ produit.Marque?.libelle }}</p>
                             <hr>
-                            <p class="mb-3"> 
+                            <p (click)="DetailProduct(produit._id,produit.typeProduct)" class="mb-3"> 
                                 <span class="tag"> <i class="fa fa-check"></i> {{produit.typeProduct}}</span> 
                                 <span class="tag">{{produit.categorie.libelle}}</span> 
                                 <span class="tag">Modal {{ produit.anneModel }} </span> 
                             </p>
-                            <a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
+                            <a (click)="SendMail(produit)" style="color:white" class="btn btn-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
                     </figcaption>
                 </figure>
             </div>

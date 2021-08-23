@@ -5,7 +5,7 @@ import { Univer } from "../class/univer.class";
 import { Marque } from "../class/marque.class";
 
 export interface Produit
-{ 
+{  
     _id?:string;
     codeBare?:string;
     libelle?:string;

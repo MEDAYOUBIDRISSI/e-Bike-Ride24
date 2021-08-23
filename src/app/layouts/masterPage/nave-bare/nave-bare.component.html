@@ -6,14 +6,14 @@
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarTop4">
 		    <ul class="navbar-nav mr-auto">
-		    	<li *ngIf="isLoging==true"><span class="nav-link">{{ 'HI' | translate }}, <a href="#" routerLink="/auth/login"> {{ 'SIGN-IN' | translate }} </a> {{ 'OR' | translate }} <a href="#" routerLink="/auth/register"> {{ 'REGISTER' | translate }} </a></span></li>
-				<li><a href="#" class="nav-link"> {{ 'DEALS' | translate }} </a></li>
-				<li><a href="#" class="nav-link"> {{ 'SELL' | translate }} </a></li>
-				<li><a href="#" class="nav-link"> {{ 'HELP' | translate }} </a></li>
+		    	<li *ngIf="isLoging==true"><span class="nav-link">{{ 'HI' | translate }}, <a href="javascript:void(0)" routerLink="/auth/login"> {{ 'SIGN-IN' | translate }} </a> {{ 'OR' | translate }} <a href="javascript:void(0)" routerLink="/auth/register"> {{ 'REGISTER' | translate }} </a></span></li>
+				<li><a href="javascript:void(0)" class="nav-link"> {{ 'DEALS' | translate }} </a></li>
+				<li><a href="javascript:void(0)" class="nav-link"> {{ 'SELL' | translate }} </a></li>
+				<li><a href="javascript:void(0)" class="nav-link"> {{ 'HELP' | translate }} </a></li>
 		    </ul>
 		    <ul class="navbar-nav">
 				<li class="nav-item dropdown">
-				 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+				 	<a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown">
 						 <img *ngIf="lang == 'en'" src="https://www.countryflags.io/um/shiny/24.png"> 
 						 <img *ngIf="lang == 'fr'" src="https://www.countryflags.io/fr/shiny/24.png"> 
 					</a>
@@ -24,15 +24,15 @@
 				</li>
 			</ul>
 			<div class="widget dropdown d-inline-block" *ngIf="isLoging==false">
-				<a href="#" class="icontext mr-4 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				<a href="javascript:void(0)" class="icontext mr-4 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 					<img class="icon icon-xs rounded-circle" [src]="User.imgProfile">
 					<div class="text">
 						Hi, {{ User.nom }} {{ User.prenom }}
 					</div>
 				</a> <!-- iconbox // -->
 				<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end">
-					<a class="dropdown-item" routerLink="/profile" href="#">My profile</a>
-					<a class="dropdown-item" href="#">Settings</a>
+					<a class="dropdown-item" routerLink="/profile" href="javascript:void(0)">My profile</a>
+					<a class="dropdown-item" href="javascript:void(0)">Settings</a>
 					<a class="dropdown-item" href='javascript:void(0)' (click)="signOut()">Log out</a>
 				</div>
 			</div>
@@ -52,38 +52,38 @@
 					<div class="col-lg  col-md-6 col-sm-12 col">
 						<form action="#" class="search-header">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="{{ 'SEARCH' | translate }}">
-								<select class="custom-select border-left"  name="category_name">
-										<option value="">{{ 'ALL-TYPE' | translate }}</option>
-										<option value="codex">{{ 'BIKES' | translate }}</option>
-										<option value="comments">{{ 'ACCESSORIES' | translate }}</option>
-										<option value="content">{{ 'ACCESSORIES' | translate }}</option>
+								<input [(ngModel)] ="_MotsCles" name="search" type="text" class="form-control" placeholder="{{ 'SEARCH' | translate }}">
+								<select [(ngModel)] ="_Type" class="custom-select border-left"  name="category_name">
+										<option value="all">{{ 'ALL-TYPE' | translate }}</option>
+										<option value="Bicyclette">{{ 'BIKES' | translate }}</option>
+										<option value="AccessoireCycliste">{{ 'ACCESSORIESCyclest' | translate }}</option>
+										<option value="AccessoireVelo">{{ 'ACCESSORIESVelo' | translate }}</option>
 								</select>
 								<div class="input-group-append">
-									<button class="btn btn-primary" type="submit">
+									<a href='javascript:void(0)' class="btn btn-primary" (click)="SearcheProduct()">
 									<i class="fa fa-search"></i>
-									</button>
+									</a>
 								</div>
 							</div>
 						</form>
 					</div> <!-- col.// -->
 					<div class="col-lg-3 col-sm-12 col-md-12 col-12" *ngIf="isLoging==false">
 						<div class="widgets-wrap float-md-right">
-							<a href="#" class="widget-header mr-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+							<a href="javascript:void(0)" class="widget-header mr-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 								<i class="icon icon-sm rounded-circle border fa fa-shopping-cart"></i>
 								<span class="notify">{{ _numberofpurchases }}</span>
 							</a>
-							<a href="#" class="widget-header mr-2" routerLink="/profile">
+							<a href="javascript:void(0)" class="widget-header mr-2" routerLink="/profile">
 								<i class="icon icon-sm rounded-circle border fa fa-user"></i>
 							</a>
-							<a href="#" class="widget-header mr-2" routerLink="/shoping-cart">
+							<a href="javascript:void(0)" class="widget-header mr-2" routerLink="/shoping-cart">
 								<i class="icon icon-sm rounded-circle border fa fa-store"></i>
 							</a>
-							<a href="#" class="widget-header mr-2" routerLink="/shoping-all">
+							<a href="javascript:void(0)" class="widget-header mr-2" routerLink="/shoping-all">
 								<i class="icon icon-sm rounded-circle border fa fa-truck"></i>
 							</a>
 							<div class="widget-header dropdown">
-								<a href="#" data-toggle="dropdown" data-offset="20,10">
+								<a href="javascript:void(0)" data-toggle="dropdown" data-offset="20,10">
 									<i class="icon icon-sm rounded-circle border fa fa-comment-dots"></i>
 									<span class="notify">2</span>
 								</a>
@@ -100,8 +100,8 @@
 										<button type="submit" class="btn btn-primary">Sign in</button>
 										</form>
 										<hr class="dropdown-divider">
-										<a class="dropdown-item" href="#">Have account? Sign up</a>
-										<a class="dropdown-item" href="#">Forgot password?</a>
+										<a class="dropdown-item" href="javascript:void(0)">Have account? Sign up</a>
+										<a class="dropdown-item" href="javascript:void(0)">Forgot password?</a>
 								</div> <!--  dropdown-menu .// -->
 							</div>  <!-- widget-header .// -->
 						</div> <!-- widgets-wrap.// -->
@@ -112,45 +112,45 @@
 		<nav class="navbar navbar-main navbar-expand pl-0">
 		      <ul class="navbar-nav flex-wrap">
 		      	<li class="nav-item">
-		           <a class="nav-link" routerLink="/index" href="#">{{ 'HOME' | translate }}</a>
+		           <a class="nav-link" routerLink="/index" href="javascript:void(0)">{{ 'HOME' | translate }}</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{ 'BIKES' | translate }} </a>
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">{{ 'BIKES' | translate }} </a>
 					<div class="dropdown-menu dropdown-large">
 						<nav class="row">
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-USER' | translate }}</h6>
-								<a *ngFor = "let univer of Univers"><a (click)="BikesByUser(univer._id)">{{univer.libelle}}</a></a>
+								<a *ngFor = "let univer of Univers"><a href="javascript:void(0)" (click)="BikesByUser(univer._id)">{{univer.libelle}}</a></a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-CATEGORIES' | translate }}</h6>
-								<a *ngFor = "let categorie of CategoriesOfBike"><a (click)="BikesByCategorie(categorie._id)">{{categorie.libelle}}</a></a>
+								<a *ngFor = "let categorie of CategoriesOfBike"><a href="javascript:void(0)" (click)="BikesByCategorie(categorie._id)">{{categorie.libelle}}</a></a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-BRANDS' | translate }}</h6>						
 								<!-- <a *ngFor = "let brand of MarqueOfBike"><a (click)="BikesByMarque(brand._id)">{{brand.libelle}}</a></a> -->
 								<span *ngFor = "let brand of MarqueOfBike" class="badge bg-light text-dark brandStyle"  (click)="BikesByMarque(brand._id)">{{brand.libelle}}</span>
 								<!-- <a>
-									<div class="mt-3 mt-md-0"><a href="#" class="btn btn-outline-light">More brands</a></div>
+									<div class="mt-3 mt-md-0"><a href="javascript:void(0)" class="btn btn-outline-light">More brands</a></div>
 								</a> -->
 							</div>
 						</nav> <!--  row end .// -->
 					</div> <!--  dropdown-menu dropdown-large end.// -->
 				</li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#">{{ 'E-BIKES' | translate }}</a>
+		          <a class="nav-link" href="javascript:void(0)">{{ 'E-BIKES' | translate }}</a>
 		        </li>
 		        <li class="nav-item">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> {{ 'ACCESSORIES' | translate }} </a>
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"> {{ 'ACCESSORIES' | translate }} </a>
 					<div class="dropdown-menu dropdown-large" style="width: 60%;font-size: small;">
 						<nav class="row">
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'FOR-THE-BICYCLE' | translate }}</h6>
-								<a *ngFor = "let categorie of CategoriesOfAccessoireOfBikes"><a (click)="BikesByAccessorieOfBike(categorie._id)">{{categorie.libelle}}</a></a>
+								<a href="javascript:void(0)" *ngFor = "let categorie of CategoriesOfAccessoireOfBikes"><a (click)="BikesByAccessorieOfBike(categorie._id)">{{categorie.libelle}}</a></a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'FOR-THE-RIDER' | translate }}</h6>
-								<a *ngFor = "let categorie of CategoriesOfAccessoireOfBikers"><a (click)="BikesByAccessorieOfBikers(categorie._id)">{{categorie.libelle}}</a></a>
+								<a href="javascript:void(0)" *ngFor = "let categorie of CategoriesOfAccessoireOfBikers"><a (click)="BikesByAccessorieOfBikers(categorie._id)">{{categorie.libelle}}</a></a>
 							</div>
 							<div class="col-4">
 								<h6 class="title-section text-uppercase">{{ 'BY-BRANDS' | translate }}</h6>
@@ -160,22 +160,22 @@
 					</div>
 		        </li>
 				<li class="nav-item">
-					<a class="nav-link" href="#" routerLink="/review">{{ 'REVIEWS' | translate }} </a>
+					<a class="nav-link" href="javascript:void(0)" routerLink="/review">{{ 'REVIEWS' | translate }} </a>
 				  </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#" routerLink="/service-at-home">{{ 'SERVICE-AT-HOME' | translate }} </a>
+		          <a class="nav-link" href="javascript:void(0)" routerLink="/service-at-home">{{ 'SERVICE-AT-HOME' | translate }} </a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#" routerLink="/all-products"><span class="badge bg-danger">{{ 'SALE' | translate }}</span></a>
+		          <a class="nav-link" href="javascript:void(0)" routerLink="/all-products"><span class="badge bg-danger">{{ 'SALE' | translate }}</span></a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#">{{ 'OUR-PLATFORM' | translate }} </a>
+		          <a class="nav-link" href="javascript:void(0)">{{ 'OUR-PLATFORM' | translate }} </a>
 		        </li>
 		        <!-- <li class="nav-item">
-		          <a class="nav-link" href="#">{{ 'DEALS' | translate }} </a>
+		          <a class="nav-link" href="javascript:void(0)">{{ 'DEALS' | translate }} </a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#">{{ 'UNDER$100' | translate }} </a>
+		          <a class="nav-link" href="javascript:void(0)">{{ 'UNDER$100' | translate }} </a>
 		        </li> -->
 		      </ul>
 		</nav> <!-- navbar-main  .// -->
@@ -208,7 +208,7 @@
 															<img [src]="produit.product.Image[0]" style="width: 50px;height: 50px;" class="img-sm">
 														</div>
 														<figcaption class="info">
-															<a href="#" class="title text-dark">{{ produit.product.libelle }}</a>
+															<a href="javascript:void(0)" class="title text-dark">{{ produit.product.libelle }}</a>
 															<div class="btn-group me-2" role="group" aria-label="First group">
 																<div class="input-group mb-3 input-spinner">
 																	<div class="input-group-prepend">

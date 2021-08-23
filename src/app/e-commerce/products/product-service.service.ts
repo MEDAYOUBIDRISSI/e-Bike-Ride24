@@ -152,4 +152,8 @@ export class ProductServiceService {
    getBikeByMaque(_id: any): Observable<any>{
     return this.httpClient.get<Produit>(`${this.baseURL}/product/bikes/byMarque/${_id}`);
   }
+  /* Get Products By Searche */
+  getProductsListBySearch(_MotsCles:any,_Type:any): Observable<any>{
+    return this.httpClient.get<Produit[]>(`${this.baseURL}/product/searche/${_MotsCles}/${_Type}`);
+  }
 }

@@ -4,20 +4,20 @@ import { Univer } from '../../class/univer.class'
 import { Categorie } from '../../class/categorie.class'
 import { Marque } from '../../class/marque.class'
 import { ProductServiceService } from '../product-service.service'
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {PageEvent} from '@angular/material/paginator'; 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { User } from '../../class/user.class'
 import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 import { ContactSupplierComponent} from '../contact-supplier/contact-supplier.component'
- 
+
 @Component({
-  selector: 'app-all-products',
-  templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.css']
+  selector: 'app-searche-page',
+  templateUrl: './searche-page.component.html',
+  styleUrls: ['./searche-page.component.css']
 })
-export class AllProductsComponent implements OnInit {
+export class SearchePageComponent implements OnInit {
 
   Produits: Produit[]=[];
   ProduitsDisplay: Produit[]=[];
@@ -32,12 +32,17 @@ export class AllProductsComponent implements OnInit {
   MinPrice:any;
   MaxPrice:any;
 
+  _Type:any
+  _MotsCles:any
+
   constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
-    private router: Router,public dialog: MatDialog,
+    private router: Router,private route: ActivatedRoute,public dialog: MatDialog,
     private snackBar: MatSnackBar) { } 
 
     ngOnInit(): void {
-    this.getProduits();
+      this._Type = this.route.snapshot.params['_Type'];
+      this._MotsCles = this.route.snapshot.params['_MotsCles'];
+    this.getProduits(this._MotsCles,this._Type);
     this.getMarques()
     this.getUnivers()
     this.getCategories()
@@ -50,11 +55,15 @@ export class AllProductsComponent implements OnInit {
     });
   }
 
-  getProduits(){
-    this.ProductService.getProductsList().subscribe(data => {
+  getProduits(_MotsCles:any,_Type:any){
+    this.ProductService.getProductsListBySearch(_MotsCles,_Type).subscribe(data => {
       this.Produits = data.products;
       this.ProduitsDisplay=this.Produits
       this.pageSlice=this.ProduitsDisplay.slice(0,10);
+      if(this.Produits.length==0)
+      {
+        this.ShowNotification('No Product existe, change Type Or Name','Close','8000',"custom-error-style")
+      }
     }); 
   }
 
@@ -257,7 +266,5 @@ export class AllProductsComponent implements OnInit {
         sb.dismiss();
       });
     }
-
-
 
 }

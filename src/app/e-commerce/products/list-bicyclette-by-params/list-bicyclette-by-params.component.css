@@ -1,0 +1,14 @@
+
+ul.custom-success {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+  ul li {
+    margin: 10px;
+  }
+  
+  ::ng-deep .custom-success-style{
+    background-color:rgb(108, 201, 66);
+    color:white;
+  }

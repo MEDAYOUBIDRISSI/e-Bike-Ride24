@@ -9,6 +9,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
  import {ImgZoomComponent} from "../img-zoom/img-zoom.component"
  import { MatSnackBar } from "@angular/material/snack-bar";
+ import { ContactSupplierComponent} from '../contact-supplier/contact-supplier.component'
 
 @Component({
   selector: 'app-detail-accessoire-cycliste',
@@ -131,6 +132,21 @@ export class DetailAccessoireCyclisteComponent implements OnInit {
       });
       sb.onAction().subscribe(() => {
         sb.dismiss();
+      });
+    }
+
+    SendMail(produit:Produit) {
+      var img:any=produit.Image[0]
+      const dialogRef = this.dialog.open(ContactSupplierComponent,{
+        width:'40%',
+        height: '400px',
+        data: {email:this.User.email,imgProduct:img,libelle:produit.libelle,
+          product_id:produit._id,fullName:this.User.nom+" "+this.User.prenom}
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+        this.ShowNotification('Email send we will respond soon','Close','4000',"custom-success-style")
       });
     }
 

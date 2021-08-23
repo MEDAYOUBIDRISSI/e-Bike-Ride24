@@ -6,6 +6,11 @@ import { Marque } from '../../class/marque.class'
 import { ProductServiceService } from '../product-service.service'
 import {PageEvent} from '@angular/material/paginator'; 
 import { ActivatedRoute,Router } from '@angular/router';
+import { ContactSupplierComponent} from '../contact-supplier/contact-supplier.component'
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { User } from '../../class/user.class'
+import { UserServicesService } from '../../../e-commerce/services/user-services.service'
 
 @Component({
   selector: 'app-list-bicyclette-by-params',
@@ -24,12 +29,17 @@ export class ListBicycletteByParamsComponent implements OnInit {
   univers: Univer[]=[];
   categories: Categorie[]=[];
 
+  public User: User={}
+  _idAuth = localStorage.getItem('jwt-IDUser')
+
   MinPrice:any;
   MaxPrice:any;
 
-  constructor(private ProductService: ProductServiceService,
+  constructor(private ProductService: ProductServiceService,private UserServices: UserServicesService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this._id = this.route.snapshot.params['_id'];
@@ -52,8 +62,13 @@ export class ListBicycletteByParamsComponent implements OnInit {
 
     this.getMarques()
     this.getUnivers()
-    this.getCategories()
-    
+    this.getUserAuth()
+  }
+
+  getUserAuth(){
+    this.UserServices.getUserAuth(this._idAuth).subscribe(data => {
+      this.User = data.User;
+    });
   }
 
   getBicyclettesByCategorie(){
@@ -253,6 +268,32 @@ export class ListBicycletteByParamsComponent implements OnInit {
     return this.ProduitsDisplay;
 
   }
+
+  SendMail(produit:Produit) {
+    var img:any=produit.Image[0]
+    const dialogRef = this.dialog.open(ContactSupplierComponent,{
+      width:'40%',
+      height: '400px',
+      data: {email:this.User.email,imgProduct:img,libelle:produit.libelle,
+        product_id:produit._id,fullName:this.User.nom+" "+this.User.prenom}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.ShowNotification('Email send we will respond soon','Close','4000',"custom-success-style")
+    });
+  }
+
+  ShowNotification(content:any, action:any, duration:any,type:any)
+    {
+      let sb = this.snackBar.open(content, action, {
+        duration: duration,
+        panelClass: [type]
+      });
+      sb.onAction().subscribe(() => {
+        sb.dismiss();
+      });
+    }
 
 
 

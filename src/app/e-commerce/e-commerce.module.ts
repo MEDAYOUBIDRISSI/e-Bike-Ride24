@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ECommerceRoutingModule } from './e-commerce-routing.module';
 import { ProfileMainComponent } from './profile-main/profile-main.component';
@@ -18,7 +18,7 @@ import { DetailAccessoireVeloComponent } from './products/detail-accessoire-velo
 import { DetailAccessoireCyclisteComponent } from './products/detail-accessoire-cycliste/detail-accessoire-cycliste.component';
 import { ShoppingcartComponent } from './products/shoppingcart/shoppingcart.component';
 import { NgxPayPalModule } from 'ngx-paypal';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { ListBicycletteByParamsComponent } from './products/list-bicyclette-by-params/list-bicyclette-by-params.component';
 import { ChatBootComponent } from './supporArea/chat-boot/chat-boot.component';
 import { AllCmdComponent } from './products/all-cmd/all-cmd.component';
@@ -31,9 +31,10 @@ import { ImgZoomComponent } from './products/img-zoom/img-zoom.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { PrintCommandeComponent } from './products/print-commande/print-commande.component';
 import { NotificationComponent } from './products/notification/notification.component';
+import { SearchePageComponent } from './products/searche-page/searche-page.component';
 
 @NgModule({
-  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent, ListAccessoireByParamsComponent, ReviewPageComponent, ServiceAtHomePageComponent, PaymentComponent, ContactSupplierComponent, ImgZoomComponent, PrintCommandeComponent, NotificationComponent],
+  declarations: [ProfileMainComponent, SectionMainComponent, IndexPageComponent, DealBannerComponent, TrendingComponent, ItemsRecommendedComponent, TradeServicesComponent, ProfilePageComponent, AllProductsComponent, AllProductsPageComponent, DetailBicycletteComponent, DetailAccessoireVeloComponent, DetailAccessoireCyclisteComponent, ShoppingcartComponent, ListBicycletteByParamsComponent, ChatBootComponent, AllCmdComponent, ListAccessoireByParamsComponent, ReviewPageComponent, ServiceAtHomePageComponent, PaymentComponent, ContactSupplierComponent, ImgZoomComponent, PrintCommandeComponent, NotificationComponent, SearchePageComponent],
   imports: [
     CommonModule,
     FormsModule,
