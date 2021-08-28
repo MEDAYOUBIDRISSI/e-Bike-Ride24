@@ -1,6 +1,6 @@
 import { Categorie } from "../class/categorie.class";
 import { Univer } from "../class/univer.class";
-//import { Remise } from "src/feature/remise/schemas/remise.schema";
+import { Remise } from "../class/remise.class";
 //import { Tage } from "src/feature/tage/schemas/tage.schema";
 import { Marque } from "../class/marque.class";
 
@@ -23,8 +23,8 @@ export interface Produit
     materiau_de_lafourche?:string;
     freins?:string;
     categorie?:Categorie;
-    // Tage?:Tage[];
-    // Remise?:Remise;
+    Tage?:string[];
+    Remise?:Remise;
     Marque?:Marque;
     Univer?:Univer;
     Image?:string[];

@@ -236,7 +236,7 @@ export class ShoppingcartComponent implements OnInit {
           console.log(this._discount)
         }, error => this._couponText="Coupon expired or Not Valide");this._coupon="";
       }
-  }
+  } 
 
   ContinueShopping()
   {

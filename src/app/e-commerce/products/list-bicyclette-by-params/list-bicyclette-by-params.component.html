@@ -111,7 +111,7 @@
             <div class="col-md-4" *ngFor = "let produit of ProduitsDisplay">
                 <figure class="card card-product-grid" >
                     <div class="img-wrap" (click)="DetailProduct(produit._id,produit.typeProduct)"> 
-                        <!-- <span class="badge badge-danger"> NEW </span> -->
+                        <span *ngIf="produit.Remise != null" class="badge badge-danger">{{produit.Remise.pourcentage}}% Off </span>
                         <img [src]="produit.Image[0]">
                     </div> 
                     <figcaption class="info-wrap">
@@ -129,6 +129,7 @@
                                 <span class="tag"> <i class="fa fa-check"></i> {{produit.typeProduct}}</span> 
                                 <span class="tag">{{produit.categorie.libelle}}</span> 
                                 <span class="tag">Modal {{ produit.anneModel }} </span> 
+                                <span *ngFor = "let tage of produit.Tage" class="tag">#{{ tage }} </span> 
                             </p>
                             <a (click)="SendMail(produit)" style="color:white" class="btn btn-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
                     </figcaption>

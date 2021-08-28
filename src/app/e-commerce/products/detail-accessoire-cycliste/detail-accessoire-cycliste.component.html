@@ -5,6 +5,7 @@
           <div class="card">
             <article class="gallery-wrap"> 
               <div class="img-big-wrap">
+                <span *ngIf="Produit.Remise != null" class="badge badge-danger">{{Produit.Remise.pourcentage}}% Off </span>
                 <div (click)="imageZoom(_url)">
                   <lib-ngx-image-zoom
                       [thumbImage]=_url
@@ -66,6 +67,8 @@
                   <dd class="col-sm-9">20-40 days</dd>
                   <dt class="col-sm-3">Availabilty</dt>
                   <dd class="col-sm-9">in Stock</dd>
+                  <dt class="col-sm-3">Tags</dt>
+                  <dd class="col-sm-9"><span *ngFor = "let tage of Produit.Tage" class="tag">#{{ tage }} </span> </dd>
                 </dl>
   
                   <div class="form-row  mt-4">
@@ -118,7 +121,7 @@
               <tr> <td>Marque</td><td>{{Produit.Marque.libelle}}</td> </tr>
               <tr> <td>Model</td><td>{{Produit.anneModel}}</td> </tr>
               <tr> <td>Categorie	</td> <td> <i class="fa fa-check text-success"></i> {{Produit.categorie.libelle}} </td></tr>
-              <tr> <td>User	</td> <td> <i class="fa fa-check text-success"></i> {{Produit.Univer.libelle}} </td></tr>
+              <tr> <td>User	</td> <td> <i class="fa fa-check text-success"></i> {{Produit.Univer?.libelle}} </td></tr>
 
               <tr> <th colspan="2">Connections</th> </tr>
               <tr> <td>#ID Of Article</td><td>{{Produit._id}}</td> </tr>
