@@ -51,8 +51,8 @@
 								</td>
 								<td> 
 									<div class="price-wrap"> 
-										<var class="price">${{ produit.product.prixVent *  produit.qte}}.00</var> 
-										<small class="text-muted"> ${{ produit.product.prixVent }}.00 each </small> 
+										<var class="price">€{{ produit.product.prixVent *  produit.qte}}.00</var> 
+										<small class="text-muted"> €{{ produit.product.prixVent }}.00 each </small> 
 									</div> <!-- price-wrap .// -->
 								</td>
 								<td class="text-right"> 
@@ -92,15 +92,15 @@
 					<div class="card-body">
 							<dl class="dlist-align">
 							  <dt>Total price:</dt>
-							  <dd class="text-right">USD {{ _totalePrice }}</dd>
+							  <dd class="text-right">Euro {{ _totalePrice }}</dd>
 							</dl>
 							<dl class="dlist-align">
 							  <dt>Discount:</dt>
-							  <dd class="text-right">USD {{ _discount }}</dd>
+							  <dd class="text-right">Euro {{ _discount }}</dd>
 							</dl>
 							<dl class="dlist-align">
 							  <dt>Total:</dt>
-							  <dd class="text-right  h5"><strong>${{ _total }}</strong></dd>
+							  <dd class="text-right  h5"><strong>€{{ _total }}</strong></dd>
 							</dl>
 							<hr>
 							<!-- <p class="text-center mb-3">

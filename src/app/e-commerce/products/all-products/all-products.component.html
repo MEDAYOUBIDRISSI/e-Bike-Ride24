@@ -115,11 +115,18 @@
                     </div> <!-- img-wrap.// -->
                     <figcaption class="info-wrap">
                             <a href="javascript:void(0)" class="title mb-2" (click)="DetailProduct(produit._id,produit.typeProduct)">{{ produit.libelle }}</a>
-                            <div class="price-wrap">
-                                <span class="price">${{produit.prixVent}}</span> 
+                            <div class="price-wrap" *ngIf="produit.Remise == null">
+                                <span class="price">€{{produit.prixVent}}</span> 
                                 <small class="text-muted">/per item</small>
-                            </div> <!-- price-wrap.// -->
+                            </div>
+                            <div class="price-wrap" *ngIf="produit.Remise != null">
+                                <del class="price-old">€{{produit.prixVent}}</del>
+                                <span class="price"> €{{(produit.prixVent-(produit.prixVent * (produit.Remise.pourcentage/100))).toFixed(2)}}</span> 
+                                <small class="text-muted">/per item</small>
+                            </div>
+
                             
+                             
                             <p class="mb-2"> {{produit.qteStock}} Pieces  <small class="text-muted">(Max Order)</small></p>
                             
                             <p class="text-muted ">Marque : {{ produit.Marque?.libelle }}</p>

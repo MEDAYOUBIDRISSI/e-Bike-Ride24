@@ -46,7 +46,7 @@
 				<div class="row row-sm align-items-center">
 					<div class="col-lg-2 col-md-3 col-6">
 						<a href="http://bootstrap-ecommerce.com/" class="brand-wrap">
-							<img class="logo" src="assets/images/logo.png">
+							<img class="logo" src="assets/images/logo1i.png">
 						</a>
 					</div>
 					<div class="col-lg  col-md-6 col-sm-12 col">
@@ -84,26 +84,22 @@
 							</a>
 							<div class="widget-header dropdown">
 								<a href="javascript:void(0)" data-toggle="dropdown" data-offset="20,10">
-									<i class="icon icon-sm rounded-circle border fa fa-comment-dots"></i>
-									<span class="notify">2</span>
+									<i class="icon icon-sm rounded-circle border fa fa-phone"></i>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<form class="px-4 py-3">
 										<div class="form-group">
-										<label>Email address</label>
-										<input type="email" class="form-control" placeholder="email@example.com">
+										<label>Email address : </label>
 										</div>
 										<div class="form-group">
-										<label>Password</label>
-										<input type="password" class="form-control" placeholder="Password">
+										<label>Tel : </label>
 										</div>
-										<button type="submit" class="btn btn-primary">Sign in</button>
-										</form>
-										<hr class="dropdown-divider">
-										<a class="dropdown-item" href="javascript:void(0)">Have account? Sign up</a>
-										<a class="dropdown-item" href="javascript:void(0)">Forgot password?</a>
-								</div> <!--  dropdown-menu .// -->
-							</div>  <!-- widget-header .// -->
+										<div class="form-group">
+											<label>Adresse : </label>
+										</div>
+									</form>
+								</div>
+							</div>
 						</div> <!-- widgets-wrap.// -->
 					</div> <!-- col.// -->
 				</div> <!-- row.// -->
@@ -168,14 +164,17 @@
 		        <li class="nav-item">
 		          <a class="nav-link" href="javascript:void(0)" routerLink="/all-products"><span class="badge bg-danger">{{ 'SALE' | translate }}</span></a>
 		        </li>
-		        <li class="nav-item">
+				<li class="nav-item">
+					<a class="nav-link" href="javascript:void(0)">Communauté cycliste</a>
+				  </li>
+		        <!-- <li class="nav-item">
 		          <a class="nav-link" href="javascript:void(0)">{{ 'OUR-PLATFORM' | translate }} </a>
-		        </li>
+		        </li> -->
 		        <!-- <li class="nav-item">
 		          <a class="nav-link" href="javascript:void(0)">{{ 'DEALS' | translate }} </a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="javascript:void(0)">{{ 'UNDER$100' | translate }} </a>
+		          <a class="nav-link" href="javascript:void(0)">{{ 'UNDER€100' | translate }} </a>
 		        </li> -->
 		      </ul>
 		</nav> <!-- navbar-main  .// -->
@@ -227,8 +226,8 @@
 												<td>
 													<button type="button" class="btn-close text-reset" aria-label="Close" (click)="deleteLigneCommande(produit._id)"></button>
 													<div class="price-wrap"> 
-														<va class="text-muted"> ${{ produit.product.prixVent *  produit.qte}} </va> <br>
-														<small class="text-muted"> ${{ produit.product.prixVent}} each</small> 
+														<va class="text-muted"> €{{ produit.product.prixVent *  produit.qte}} </va> <br>
+														<small class="text-muted"> €{{ produit.product.prixVent}} each</small> 
 													</div>
 												</td>
 											</tr>
@@ -252,7 +251,7 @@
 						</dl>
 						<dl class="dlist-align">
 							<dt>Total:</dt>
-							<dd class="text-right  h5"><strong>${{ _total }}</strong></dd>
+							<dd class="text-right  h5"><strong>€{{ _total }}</strong></dd>
 						</dl>
 						<hr>
 						<p class="text-center mb-3">
@@ -261,7 +260,6 @@
 				</div> <!-- card-body.// -->
 			</div>
 			<div class="btn-group btngroup-style" role="group" aria-label="Basic outlined example">
-				<button type="button" class="btn btn-outline-primary">Checkout</button>
 				<button type="button" routerLink="/shoping-cart" class="btn btn-outline-primary">View Cart</button>
 			</div>
 		</div>
