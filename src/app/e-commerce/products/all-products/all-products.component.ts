@@ -54,13 +54,13 @@ export class AllProductsComponent implements OnInit {
     this.ProductService.getProductsList().subscribe(data => {
       this.Produits = data.products;
       this.ProduitsDisplay=this.Produits
-      this.pageSlice=this.ProduitsDisplay.slice(0,10);
+      this.pageSlice=this.ProduitsDisplay.slice(0,9);
     }); 
   }
 
   sliceChange()
   {
-    this.pageSlice=this.ProduitsDisplay.slice(0,10);
+    this.pageSlice=this.ProduitsDisplay.slice(0,9);
   }
 
   OnPageChange(event : PageEvent)

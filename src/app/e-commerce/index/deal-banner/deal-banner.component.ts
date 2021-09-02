@@ -10,6 +10,6 @@ export class DealBannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
+  } 
 
 }
